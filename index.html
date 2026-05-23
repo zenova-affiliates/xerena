@@ -1929,22 +1929,7 @@
           document.getElementById('admin-panel').classList.add('open');
         }
       });
-      // Mobile: triple-tap logo (no comment identifying it as admin trigger)
-      var _tc = 0, _tt = null;
-      var _logo = document.querySelector('.logo-wrap');
-      if (_logo) {
-        _logo.addEventListener('click', function() {
-          _tc++;
-          clearTimeout(_tt);
-          _tt = setTimeout(function(){ _tc = 0; }, 600);
-          if (_tc >= 3) {
-            _tc = 0; clearTimeout(_tt);
-            document.getElementById('admin-panel').classList.add('open');
-          }
-        });
-      }
-    })();
-
+     
     // JPG conversion
     window.convertToJpg = function (imageUrl) {
       return new Promise((resolve) => {
