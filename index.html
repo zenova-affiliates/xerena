@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
-    /* ── Root Variables — Charlotte Tilbury / Sephora palette ── */
     :root {
       --cream:        #fdf6f0;
       --cream-mid:    #f5e8de;
@@ -28,9 +27,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--cream);
       color: var(--text-dark);
@@ -39,7 +36,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Noise texture overlay ── */
     body::before {
       content: '';
       position: fixed;
@@ -51,7 +47,6 @@
       opacity: 0.6;
     }
 
-    /* ── Header ── */
     header {
       padding: 0 5%;
       display: flex;
@@ -133,7 +128,6 @@
     nav a:hover { color: var(--rose-dark); }
     nav a:hover::after { width: 100%; }
 
-    /* ── Hero ── */
     .hero {
       position: relative;
       min-height: 90vh;
@@ -152,7 +146,6 @@
       background: radial-gradient(ellipse at 70% 50%, rgba(212, 169, 106, 0.15) 0%, transparent 60%);
     }
 
-    /* Decorative rose petals / circles */
     .hero-deco {
       position: absolute;
       right: 8%;
@@ -283,7 +276,6 @@
       color: var(--cream);
     }
 
-    /* ── Category strip ── */
     .categories-strip {
       background: var(--rose-dark);
       padding: 0;
@@ -327,16 +319,11 @@
     }
 
     .cat-btn:hover,
-    .cat-btn.active {
-      color: var(--gold-light);
-    }
+    .cat-btn.active { color: var(--gold-light); }
 
     .cat-btn:hover::after,
-    .cat-btn.active::after {
-      width: 40%;
-    }
+    .cat-btn.active::after { width: 40%; }
 
-    /* ── Section ── */
     .section {
       padding: 90px 5%;
       display: none;
@@ -380,7 +367,6 @@
       letter-spacing: 1px;
     }
 
-    /* ── Search ── */
     .search-wrap {
       max-width: 400px;
       margin: 0 auto 50px;
@@ -418,14 +404,12 @@
       pointer-events: none;
     }
 
-    /* ── Products Grid ── */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
       gap: 32px;
     }
 
-    /* ── Product Card ── */
     .card {
       background: #fff;
       overflow: hidden;
@@ -581,7 +565,6 @@
       transform: translateY(-1px);
     }
 
-    /* ── Gallery ── */
     .product-gallery { width: 100%; }
 
     .main-image {
@@ -618,7 +601,6 @@
       border-color: var(--champagne);
     }
 
-    /* ── Loading ── */
     .loading-overlay {
       text-align: center;
       padding: 60px;
@@ -641,7 +623,6 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Feature Banner ── */
     .feature-banner {
       background: var(--rose-dark);
       color: var(--cream);
@@ -717,7 +698,6 @@
       max-width: unset;
     }
 
-    /* ── About / Brand Story ── */
     .about {
       padding: 100px 5%;
       background: linear-gradient(180deg, #fdf6f0 0%, #f5e8de 100%);
@@ -756,7 +736,6 @@
       letter-spacing: 0.5px;
     }
 
-    /* ── Footer ── */
     footer {
       background: var(--text-dark);
       color: rgba(253, 246, 240, 0.4);
@@ -777,7 +756,6 @@
 
     footer p { font-size: 11px; letter-spacing: 1px; }
 
-    /* ── Admin Panel ── */
     #admin-panel {
       display: none;
       position: fixed;
@@ -791,7 +769,7 @@
 
     #admin-panel.open { display: flex; }
 
-    .admin-box {t
+    .admin-box {
       background: #fff;
       border: 1px solid var(--border-gold);
       padding: 40px 36px;
@@ -1078,7 +1056,6 @@
       padding: 30px 0;
     }
 
-    /* ── Currency badge ── */
     #zn-badge {
       font-size: 10px !important;
       font-weight: 700 !important;
@@ -1091,25 +1068,6 @@
       white-space: nowrap !important;
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      header { height: auto; padding: 16px 5%; flex-direction: column; gap: 14px; }
-      nav { gap: 20px; flex-wrap: wrap; justify-content: center; }
-      .hero { min-height: 70vh; }
-      .hero h1 { font-size: 40px; }
-      .hero-deco { display: none; }
-      .section { padding: 50px 4%; }
-      .products { grid-template-columns: 1fr 1fr; gap: 20px; }
-      .features-grid { gap: 28px; }
-      footer { flex-direction: column; text-align: center; }
-    }
-
-    @media (max-width: 480px) {
-      .products { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 34px; }
-    }
-
-    /* ── Product Badge Tags ── */
     .card-img-wrap, .product-gallery { position: relative; }
 
     .product-badge {
@@ -1126,22 +1084,10 @@
       pointer-events: none;
     }
 
-    .badge-trending {
-      background: var(--rose-dark);
-      color: #fff;
-    }
+    .badge-trending   { background: var(--rose-dark); color: #fff; }
+    .badge-bestseller { background: var(--gold);      color: #fff; }
+    .badge-new        { background: var(--rose-deep); color: #fff; }
 
-    .badge-bestseller {
-      background: var(--gold);
-      color: #fff;
-    }
-
-    .badge-new {
-      background: var(--rose-deep);
-      color: #fff;
-    }
-
-    /* ── Page Load Animation ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1151,11 +1097,27 @@
     .hero h1      { animation: fadeUp .7s ease .25s both; }
     .hero-sub     { animation: fadeUp .7s ease .4s both; }
     .hero-cta     { animation: fadeUp .7s ease .55s both; }
+
+    @media (max-width: 768px) {
+      header { height: auto; padding: 16px 5%; flex-direction: column; gap: 14px; }
+      nav { gap: 20px; flex-wrap: wrap; justify-content: center; }
+      .hero { min-height: 70vh; }
+      .hero h1 { font-size: 40px; }
+      .hero-deco { display: none; }
+      .section { padding: 50px 4%; }
+      .products { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .features-grid { gap: 28px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .products { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 34px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ── Header ── -->
   <header>
     <div class="logo-wrap">
       <div class="logo">x̌erena</div>
@@ -1170,7 +1132,6 @@
     </nav>
   </header>
 
-  <!-- ── Hero ── -->
   <section class="hero">
     <div class="hero-deco"></div>
     <div class="hero-content">
@@ -1179,12 +1140,11 @@
       <p class="hero-sub">Discover curated luxury beauty products — skincare, nails & hair — crafted to elevate your everyday ritual.</p>
       <div class="hero-cta">
         <button class="btn-primary" onclick="openSection('home')">Shop Collection</button>
-        <button class="btn-outline" href="#about">Our Story</button>
+        <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Our Story</button>
       </div>
     </div>
   </section>
 
-  <!-- ── Category Strip ── -->
   <div class="categories-strip">
     <div class="categories-strip-inner">
       <button class="cat-btn active" onclick="openSection('home')">All</button>
@@ -1194,7 +1154,7 @@
     </div>
   </div>
 
-  <!-- ── ALL Products ── -->
+  <!-- ALL Products -->
   <section class="section active" id="home">
     <div class="section-header">
       <div class="section-eyebrow">Curated For You</div>
@@ -1210,7 +1170,7 @@
     <div class="products" id="home-products"></div>
   </section>
 
-  <!-- ── Skincare ── -->
+  <!-- Skincare -->
   <section class="section" id="skincare">
     <div class="section-header">
       <div class="section-eyebrow">Glow & Protect</div>
@@ -1221,7 +1181,6 @@
       <span class="search-icon">⚲</span>
     </div>
     <div class="products" id="skincare-products">
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/41f85bba-b3b3-4533-9f33-b0ed6a1cbbe1.jpg?imageView2/2/w/800/q/70/format/avif" alt="King Love Beauty Sunscreen">
@@ -1238,7 +1197,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/5cf28654-2751-4f28-a410-f6567430330b.jpg?imageView2/2/w/800/q/70/format/avif" alt="Clarity Isolation Protection Cream">
@@ -1254,7 +1212,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/f5707130-079b-4ab2-aa98-03a60dff3abb.jpg?imageView2/2/w/800/q/70/format/avif" alt="Coconut Tanning Oil">
@@ -1271,11 +1228,10 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ── Nails ── -->
+  <!-- Nails -->
   <section class="section" id="nails">
     <div class="section-header">
       <div class="section-eyebrow">Polish &amp; Perfection</div>
@@ -1286,7 +1242,6 @@
       <span class="search-icon">⚲</span>
     </div>
     <div class="products" id="nails-products">
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/c6c11aec-30ce-4a25-b5e2-18d8b9fb6d12.jpg?imageView2/2/w/1300/q/90/format/avif" alt="Easter Fake Nail Set">
@@ -1303,7 +1258,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/ba46f935-de74-4468-bba6-7cfaa9affe27.jpg?imageView2/2/w/800/q/70/format/avif" alt="Red Cat Eye Nails">
@@ -1320,7 +1274,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/f6ff69c8-8eb4-4dae-9d89-1beac4470597.jpg?imageView2/2/w/800/q/70/format/avif" alt="Easter Bunny Nails">
@@ -1336,11 +1289,10 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ── Hair ── -->
+  <!-- Hair -->
   <section class="section" id="hair">
     <div class="section-header">
       <div class="section-eyebrow">Nourish &amp; Transform</div>
@@ -1351,7 +1303,6 @@
       <span class="search-icon">⚲</span>
     </div>
     <div class="products" id="hair-products">
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H1d2213e1d17e42d3b64cde39adbeaf76b.jpg?avif=close&webp=close" alt="Keratin Treatment">
@@ -1368,7 +1319,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H23f7a5c36f1b4c58a6648e771ecd1dc65.jpg?avif=close&webp=close" alt="Hair Touch Up Stick">
@@ -1384,7 +1334,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H6c4a7006354d487890e4a19212aa92b4S.jpg?avif=close&webp=close" alt="Rosemary Shampoo">
@@ -1401,7 +1350,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-img-wrap">
           <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H8f83b699c6c644b99904a3d298e4f452a.jpg?avif=close&webp=close" alt="Hair Dye">
@@ -1417,11 +1365,9 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ── Feature Banner ── -->
   <div class="feature-banner">
     <h2>Why Choose X̌erena Beauty?</h2>
     <p>Every product is carefully curated to meet the highest standards of quality, luxury, and effectiveness.</p>
@@ -1449,10 +1395,9 @@
     </div>
   </div>
 
-  <!-- ── About ── -->
   <section class="about" id="about">
     <h2>The X̌erena Story</h2>
-    <p>Gloss Mart was born from a love of luxury and a desire to make premium beauty accessible to all. We partner with trusted global brands to bring you the finest in skincare, nail art, and hair care — delivered with elegance and care.</p>
+    <p>X̌erena was born from a love of luxury and a desire to make premium beauty accessible to all. We partner with trusted global brands to bring you the finest in skincare, nail art, and hair care — delivered with elegance and care.</p>
   </section>
 
   <footer>
@@ -1461,11 +1406,10 @@
     <p style="letter-spacing:0.5px;">Beauty &bull; Luxury &bull; Confidence</p>
   </footer>
 
-  <!-- ── Admin Panel ── -->
+  <!-- Admin Panel -->
   <div id="admin-panel">
     <div class="admin-box">
       <button class="admin-close" onclick="closeAdmin()">&#x2715;</button>
-
       <div class="admin-login-screen" id="admin-login-screen">
         <h2>Admin Login</h2>
         <input type="email" id="admin-email" placeholder="Email address">
@@ -1473,16 +1417,13 @@
         <button class="login-btn" onclick="adminLogin()">Sign In</button>
         <div class="login-error" id="login-error"></div>
       </div>
-
       <div class="admin-content-screen" id="admin-content-screen">
         <button class="logout-btn" onclick="adminLogout()">Logout</button>
         <h2>Admin Panel</h2>
-
         <div class="admin-tabs">
           <button class="admin-tab active" onclick="switchAdminTab('add')">+ Add Product</button>
           <button class="admin-tab" onclick="switchAdminTab('edit')">Edit / Delete</button>
         </div>
-
         <div id="tab-add">
           <div class="admin-field">
             <label>Product Name *</label>
@@ -1531,7 +1472,6 @@
           <button class="admin-submit" id="ap-submit-btn" onclick="submitProduct()">Add to Collection</button>
           <div id="admin-msg" class="admin-msg"></div>
         </div>
-
         <div id="tab-edit" style="display:none;">
           <div id="edit-list"></div>
           <div id="edit-empty">No saved products yet. Add some first!</div>
@@ -1540,8 +1480,7 @@
     </div>
   </div>
 
-
-  <!-- ── Currency System ── -->
+  <!-- Currency System -->
   <script>
     (function () {
       const CURRENCIES = {
@@ -1650,219 +1589,225 @@
     })();
   </script>
 
-  <!-- ── Global Firebase Dispatcher ── -->
- <!-- ── Global Firebase Dispatcher ── -->
-<script>
-  window._fb = {};
-
-  async function waitForFb(fn, arg) {
-    let tries = 0;
-    while (!window._fb[fn] && tries < 40) {
-      await new Promise(r => setTimeout(r, 150));
-      tries++;
+  <!-- Firebase Dispatcher -->
+  <script>
+    window._fb = {};
+    async function waitForFb(fn, arg) {
+      let tries = 0;
+      while (!window._fb[fn] && tries < 40) {
+        await new Promise(r => setTimeout(r, 150));
+        tries++;
+      }
+      if (window._fb[fn]) window._fb[fn](arg);
+      else alert('Firebase load nahi hua. Page refresh karo.');
     }
-    if (window._fb[fn]) window._fb[fn](arg);
-    else alert('Firebase load nahi hua. Page refresh karo.');
-  }
+    function submitProduct()   { waitForFb('submitProduct'); }
+    function adminLogin()      { waitForFb('adminLogin'); }
+    function adminLogout()     { window._fb.adminLogout ? window._fb.adminLogout() : null; }
+    function editProduct(id)   { waitForFb('editProduct', id); }
+    function deleteProduct(id) { waitForFb('deleteProduct', id); }
+  </script>
 
-  function submitProduct()   { waitForFb('submitProduct'); }
-  function adminLogin()      { waitForFb('adminLogin'); }
-  function adminLogout()     { window._fb.adminLogout ? window._fb.adminLogout() : null; }
-  function editProduct(id)   { waitForFb('editProduct', id); }
-  function deleteProduct(id) { waitForFb('deleteProduct', id); }
-</script>
+  <!-- Firebase Module -->
+  <script type="module">
+    import { initializeApp }                          from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged,
+             signInWithEmailAndPassword, signOut }    from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+    import { getFirestore, collection, onSnapshot,
+             addDoc, updateDoc, deleteDoc, doc,
+             query, orderBy }                        from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
-<!-- ── Firebase Module ── -->
-<script type="module">
-  import { initializeApp }                          from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged,
-           signInWithEmailAndPassword, signOut }    from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
-  import { getFirestore, collection, onSnapshot,
-           addDoc, updateDoc, deleteDoc, doc }      from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+    const firebaseConfig = {
+      apiKey:            "AIzaSyDpJCa4L4j53wZ50chwLKx17JFRYBdxSow",
+      authDomain:        "zenova-beauty.firebaseapp.com",
+      projectId:         "zenova-beauty",
+      storageBucket:     "zenova-beauty.firebasestorage.app",
+      messagingSenderId: "923228663946",
+      appId:             "1:923228663946:web:7b0a8d7b3cefc80a7e3d73",
+      measurementId:     "G-NRP1ETHDZN"
+    };
 
-  const firebaseConfig = {
-    apiKey:            "AIzaSyDpJCa4L4j53wZ50chwLKx17JFRYBdxSow",
-    authDomain:        "zenova-beauty.firebaseapp.com",
-    projectId:         "zenova-beauty",
-    storageBucket:     "zenova-beauty.firebasestorage.app",
-    messagingSenderId: "923228663946",
-    appId:             "1:923228663946:web:7b0a8d7b3cefc80a7e3d73",
-    measurementId:     "G-NRP1ETHDZN"
-  };
+    const app  = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+    const col  = collection(db, 'products');
 
-  const app  = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db   = getFirestore(app);
-  const col  = collection(db, 'products');
-
-  window.firestoreProducts = [];
-
-  onAuthStateChanged(auth, (user) => {
-    document.getElementById('admin-login-screen').style.display   = user ? 'none'  : 'block';
-    document.getElementById('admin-content-screen').style.display = user ? 'block' : 'none';
-  });
-
-  onSnapshot(col, (snapshot) => {
     window.firestoreProducts = [];
-    snapshot.forEach(d => window.firestoreProducts.push({ id: d.id, ...d.data() }));
-    renderHomeGrid();
-    renderCategoryCards();
-    const loader = document.getElementById('home-loading');
-    if (loader) loader.style.display = 'none';
-  });
 
-  function renderHomeGrid() {
-    const grid = document.getElementById('home-products');
-    if (!grid) return;
-    grid.querySelectorAll('.card[data-firestore]').forEach(c => c.remove());
-    const fsCards = window.firestoreProducts.map(p => {
-      const card = window.buildCard(p, p.id);
-      card.setAttribute('data-firestore', '1');
-      return card;
+    onAuthStateChanged(auth, (user) => {
+      document.getElementById('admin-login-screen').style.display   = user ? 'none'  : 'block';
+      document.getElementById('admin-content-screen').style.display = user ? 'block' : 'none';
     });
-    const staticCards = Array.from(grid.querySelectorAll('.card:not([data-firestore])'));
-    const all = [...staticCards, ...fsCards];
-    for (let i = all.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [all[i], all[j]] = [all[j], all[i]];
-    }
-    grid.innerHTML = '';
-    all.forEach(card => grid.appendChild(card));
-  }
 
-  function renderCategoryCards() {
-    ['skincare', 'nails', 'hair'].forEach(section => {
-      const grid = document.getElementById(section + '-products');
+    // PUBLIC READ — no auth required, uses open Firestore rules
+    const q = query(col, orderBy('createdAt', 'desc'));
+    onSnapshot(q, (snapshot) => {
+      window.firestoreProducts = [];
+      snapshot.forEach(d => window.firestoreProducts.push({ id: d.id, ...d.data() }));
+      renderHomeGrid();
+      renderCategoryCards();
+      const loader = document.getElementById('home-loading');
+      if (loader) loader.style.display = 'none';
+    }, (err) => {
+      // On permission error, hide loader gracefully — static cards still show
+      const loader = document.getElementById('home-loading');
+      if (loader) loader.style.display = 'none';
+      console.warn('Firestore read error:', err.code);
+    });
+
+    function renderHomeGrid() {
+      const grid = document.getElementById('home-products');
       if (!grid) return;
       grid.querySelectorAll('.card[data-firestore]').forEach(c => c.remove());
-      window.firestoreProducts
-        .filter(p => p.section === section)
-        .forEach(p => {
-          const card = window.buildCard(p, p.id);
-          card.setAttribute('data-firestore', '1');
-          grid.appendChild(card);
-        });
-    });
-  }
-
-  window._fb.adminLogin = function () {
-    const email = document.getElementById('admin-email').value.trim();
-    const pass  = document.getElementById('admin-password').value;
-    const errEl = document.getElementById('login-error');
-    errEl.style.display = 'none';
-    signInWithEmailAndPassword(auth, email, pass)
-      .then(() => {
-        document.getElementById('admin-email').value    = '';
-        document.getElementById('admin-password').value = '';
-      })
-      .catch(err => {
-        const msgs = {
-          'auth/invalid-email':      'Invalid email address.',
-          'auth/user-not-found':     'No account found.',
-          'auth/wrong-password':     'Incorrect password.',
-          'auth/invalid-credential': 'Invalid email or password.',
-          'auth/too-many-requests':  'Too many attempts. Try later.',
-        };
-        errEl.textContent   = msgs[err.code] || 'Login failed.';
-        errEl.style.display = 'block';
+      const fsCards = window.firestoreProducts.map(p => {
+        const card = window.buildCard(p, p.id);
+        card.setAttribute('data-firestore', '1');
+        return card;
       });
-  };
-
-  window._fb.adminLogout = function () {
-    signOut(auth).then(() => { closeAdmin(); showMsg('Logged out.'); });
-  };
-
-  window._fb.submitProduct = async function () {
-    const name      = document.getElementById('ap-name').value.trim();
-    const pricePkr  = parseFloat(document.getElementById('ap-price-pkr').value);
-    const section   = document.getElementById('ap-section').value;
-    const link      = document.getElementById('ap-link').value.trim();
-    const shortDesc = document.getElementById('ap-short').value.trim();
-    const fullDesc  = document.getElementById('ap-full').value.trim();
-    const mainImg   = document.getElementById('ap-img').value.trim();
-    const editId    = document.getElementById('ap-edit-id').value;
-    const tag       = document.getElementById('ap-tag').value;
-    if (!name || !mainImg || !pricePkr) { alert('Name, Image URL, and Price are required.'); return; }
-    const extraImgs = Array.from(document.querySelectorAll('.admin-thumb-input'))
-      .map(i => i.value.trim()).filter(Boolean);
-    const product = { name, pricePkr, section, link, shortDesc, fullDesc, mainImg, extraImgs, tag, createdAt: Date.now() };
-    try {
-      if (editId) {
-        await updateDoc(doc(db, 'products', editId), product);
-        showMsg('✓ "' + name + '" updated!');
-      } else {
-        await addDoc(col, product);
-        openSection(section);
-        showMsg('✓ "' + name + '" added to collection!');
+      const staticCards = Array.from(grid.querySelectorAll('.card:not([data-firestore])'));
+      const all = [...staticCards, ...fsCards];
+      for (let i = all.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [all[i], all[j]] = [all[j], all[i]];
       }
-      clearAdminForm();
-    } catch (e) { console.error(e); alert('Could not save product.'); }
-  };
+      grid.innerHTML = '';
+      all.forEach(card => grid.appendChild(card));
+    }
 
-  window._fb.editProduct = function (docId) {
-    const p = window.firestoreProducts.find(x => x.id === docId);
-    if (!p) return;
-    switchAdminTab('add');
-    document.getElementById('ap-name').value      = p.name      || '';
-    document.getElementById('ap-price-pkr').value = p.pricePkr  || '';
-    document.getElementById('ap-section').value   = p.section   || 'skincare';
-    document.getElementById('ap-link').value      = p.link      || '';
-    document.getElementById('ap-short').value     = p.shortDesc || '';
-    document.getElementById('ap-full').value      = p.fullDesc  || '';
-    document.getElementById('ap-img').value       = p.mainImg   || '';
-    document.getElementById('ap-edit-id').value   = docId;
-    document.getElementById('ap-tag').value       = p.tag       || '';
-    document.getElementById('ap-submit-btn').textContent = 'Save Changes';
-    const thumbContainer = document.getElementById('thumb-fields');
-    thumbContainer.innerHTML = '';
-    (p.extraImgs || []).forEach(src => {
-      const wrap  = document.createElement('div');
-      wrap.style.marginTop = '8px';
-      const input = document.createElement('input');
-      input.type = 'url'; input.className = 'admin-thumb-input';
-      input.value = src;
-      input.style.cssText = 'width:100%;padding:10px 14px;background:var(--cream);border:1px solid var(--border-gold);color:var(--text-dark);font-size:13px;outline:none;';
-      wrap.appendChild(input);
-      thumbContainer.appendChild(wrap);
-    });
-  };
+    function renderCategoryCards() {
+      ['skincare', 'nails', 'hair'].forEach(section => {
+        const grid = document.getElementById(section + '-products');
+        if (!grid) return;
+        grid.querySelectorAll('.card[data-firestore]').forEach(c => c.remove());
+        window.firestoreProducts
+          .filter(p => p.section === section)
+          .forEach(p => {
+            const card = window.buildCard(p, p.id);
+            card.setAttribute('data-firestore', '1');
+            grid.appendChild(card);
+          });
+      });
+    }
 
-  window._fb.deleteProduct = async function (docId) {
-    if (!confirm('Delete this product permanently?')) return;
-    try {
-      await deleteDoc(doc(db, 'products', docId));
-      if (window._fb.renderEditList) window._fb.renderEditList();
-      showMsg('Product deleted.');
-    } catch (e) { console.error(e); alert('Delete failed.'); }
-  };
+    window._fb.adminLogin = function () {
+      const email = document.getElementById('admin-email').value.trim();
+      const pass  = document.getElementById('admin-password').value;
+      const errEl = document.getElementById('login-error');
+      errEl.style.display = 'none';
+      signInWithEmailAndPassword(auth, email, pass)
+        .then(() => {
+          document.getElementById('admin-email').value    = '';
+          document.getElementById('admin-password').value = '';
+        })
+        .catch(err => {
+          const msgs = {
+            'auth/invalid-email':      'Invalid email address.',
+            'auth/user-not-found':     'No account found.',
+            'auth/wrong-password':     'Incorrect password.',
+            'auth/invalid-credential': 'Invalid email or password.',
+            'auth/too-many-requests':  'Too many attempts. Try later.',
+          };
+          errEl.textContent   = msgs[err.code] || 'Login failed.';
+          errEl.style.display = 'block';
+        });
+    };
 
-  window._fb.renderEditList = function () {
-    const list  = document.getElementById('edit-list');
-    const empty = document.getElementById('edit-empty');
-    list.innerHTML = '';
-    if (!window.firestoreProducts.length) { empty.style.display = 'block'; return; }
-    empty.style.display = 'none';
-    window.firestoreProducts.forEach(p => {
-      const currency     = window.userCurrency || { symbol: 'Rs.', rate: 1 };
-      const displayPrice = p.pricePkr ? window.convertPrice(p.pricePkr, currency) : 'N/A';
-      const item = document.createElement('div');
-      item.className = 'edit-item';
-      item.innerHTML = `
-        <img src="${p.mainImg}" onerror="this.src='https://placehold.co/52x52/fdf6f0/8b2635?text=?'">
-        <div class="edit-item-info">
-          <strong>${p.name}</strong>
-          <span>${p.section} · ${displayPrice}</span>
-        </div>
-        <div class="edit-item-btns">
-          <button class="edit-btn edit" onclick="editProduct('${p.id}')">Edit</button>
-          <button class="edit-btn del"  onclick="deleteProduct('${p.id}')">Delete</button>
-        </div>
-      `;
-      list.appendChild(item);
-    });
-  };
-</script>
-  <!-- ── Vanilla JS Helpers ── -->
+    window._fb.adminLogout = function () {
+      signOut(auth).then(() => { closeAdmin(); showMsg('Logged out.'); });
+    };
+
+    window._fb.submitProduct = async function () {
+      const name      = document.getElementById('ap-name').value.trim();
+      const pricePkr  = parseFloat(document.getElementById('ap-price-pkr').value);
+      const section   = document.getElementById('ap-section').value;
+      const link      = document.getElementById('ap-link').value.trim();
+      const shortDesc = document.getElementById('ap-short').value.trim();
+      const fullDesc  = document.getElementById('ap-full').value.trim();
+      const mainImg   = document.getElementById('ap-img').value.trim();
+      const editId    = document.getElementById('ap-edit-id').value;
+      const tag       = document.getElementById('ap-tag').value;
+      if (!name || !mainImg || !pricePkr) { alert('Name, Image URL, and Price are required.'); return; }
+      const extraImgs = Array.from(document.querySelectorAll('.admin-thumb-input'))
+        .map(i => i.value.trim()).filter(Boolean);
+      const product = { name, pricePkr, section, link, shortDesc, fullDesc, mainImg, extraImgs, tag, createdAt: Date.now() };
+      try {
+        if (editId) {
+          await updateDoc(doc(db, 'products', editId), product);
+          showMsg('✓ "' + name + '" updated!');
+        } else {
+          await addDoc(col, product);
+          openSection(section);
+          showMsg('✓ "' + name + '" added to collection!');
+        }
+        clearAdminForm();
+      } catch (e) { console.error(e); alert('Could not save product.'); }
+    };
+
+    window._fb.editProduct = function (docId) {
+      const p = window.firestoreProducts.find(x => x.id === docId);
+      if (!p) return;
+      switchAdminTab('add');
+      document.getElementById('ap-name').value      = p.name      || '';
+      document.getElementById('ap-price-pkr').value = p.pricePkr  || '';
+      document.getElementById('ap-section').value   = p.section   || 'skincare';
+      document.getElementById('ap-link').value      = p.link      || '';
+      document.getElementById('ap-short').value     = p.shortDesc || '';
+      document.getElementById('ap-full').value      = p.fullDesc  || '';
+      document.getElementById('ap-img').value       = p.mainImg   || '';
+      document.getElementById('ap-edit-id').value   = docId;
+      document.getElementById('ap-tag').value       = p.tag       || '';
+      document.getElementById('ap-submit-btn').textContent = 'Save Changes';
+      const thumbContainer = document.getElementById('thumb-fields');
+      thumbContainer.innerHTML = '';
+      (p.extraImgs || []).forEach(src => {
+        const wrap  = document.createElement('div');
+        wrap.style.marginTop = '8px';
+        const input = document.createElement('input');
+        input.type = 'url'; input.className = 'admin-thumb-input';
+        input.value = src;
+        input.style.cssText = 'width:100%;padding:10px 14px;background:var(--cream);border:1px solid var(--border-gold);color:var(--text-dark);font-size:13px;outline:none;';
+        wrap.appendChild(input);
+        thumbContainer.appendChild(wrap);
+      });
+    };
+
+    window._fb.deleteProduct = async function (docId) {
+      if (!confirm('Delete this product permanently?')) return;
+      try {
+        await deleteDoc(doc(db, 'products', docId));
+        if (window._fb.renderEditList) window._fb.renderEditList();
+        showMsg('Product deleted.');
+      } catch (e) { console.error(e); alert('Delete failed.'); }
+    };
+
+    window._fb.renderEditList = function () {
+      const list  = document.getElementById('edit-list');
+      const empty = document.getElementById('edit-empty');
+      list.innerHTML = '';
+      if (!window.firestoreProducts.length) { empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      window.firestoreProducts.forEach(p => {
+        const currency     = window.userCurrency || { symbol: 'Rs.', rate: 1 };
+        const displayPrice = p.pricePkr ? window.convertPrice(p.pricePkr, currency) : 'N/A';
+        const item = document.createElement('div');
+        item.className = 'edit-item';
+        item.innerHTML = `
+          <img src="${p.mainImg}" onerror="this.src='https://placehold.co/52x52/fdf6f0/8b2635?text=?'">
+          <div class="edit-item-info">
+            <strong>${p.name}</strong>
+            <span>${p.section} · ${displayPrice}</span>
+          </div>
+          <div class="edit-item-btns">
+            <button class="edit-btn edit" onclick="editProduct('${p.id}')">Edit</button>
+            <button class="edit-btn del"  onclick="deleteProduct('${p.id}')">Delete</button>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    };
+  </script>
+
+  <!-- Helpers + Obfuscated Admin Trigger -->
   <script>
     function openSection(id) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -1880,11 +1825,9 @@
     function toggleDetails(btn) {
       const fd = btn.closest('.card-content').querySelector('.full-desc');
       if (fd.style.display === 'block') {
-        fd.style.display = 'none';
-        btn.textContent  = 'View Details';
+        fd.style.display = 'none'; btn.textContent = 'View Details';
       } else {
-        fd.style.display = 'block';
-        btn.textContent  = 'Hide Details';
+        fd.style.display = 'block'; btn.textContent = 'Hide Details';
       }
     }
 
@@ -1909,134 +1852,103 @@
       const hasMultiple = allImgs.length > 1;
       const currency    = window.userCurrency || { symbol: 'Rs.', rate: 1 };
       const priceText   = p.pricePkr ? window.convertPrice(p.pricePkr, currency) : 'N/A';
-
-      const badgeHtml = p.tag === 'trending'
-        ? `<span class="product-badge badge-trending">🔥 Trending</span>`
-        : p.tag === 'bestseller'
-        ? `<span class="product-badge badge-bestseller">⭐ Best Seller</span>`
-        : p.tag === 'new'
-        ? `<span class="product-badge badge-new">✨ New</span>`
-        : '';
-
+      const badgeHtml   = p.tag === 'trending'   ? `<span class="product-badge badge-trending">🔥 Trending</span>`
+                        : p.tag === 'bestseller'  ? `<span class="product-badge badge-bestseller">⭐ Best Seller</span>`
+                        : p.tag === 'new'         ? `<span class="product-badge badge-new">✨ New</span>` : '';
       let imgHtml = hasMultiple
-        ? `<div class="product-gallery">
-             ${badgeHtml}
-             <img src="${p.mainImg}" class="main-image" crossorigin="anonymous">
-             <div class="thumbnails">
-               ${allImgs.map((src, i) => `<img src="${src}" class="thumb ${i === 0 ? 'active' : ''}" crossorigin="anonymous" onclick="changeImage(this)">`).join('')}
-             </div>
-           </div>`
+        ? `<div class="product-gallery">${badgeHtml}<img src="${p.mainImg}" class="main-image" crossorigin="anonymous"><div class="thumbnails">${allImgs.map((src,i)=>`<img src="${src}" class="thumb ${i===0?'active':''}" crossorigin="anonymous" onclick="changeImage(this)">`).join('')}</div></div>`
         : `<div class="card-img-wrap">${badgeHtml}<img src="${p.mainImg}" crossorigin="anonymous" alt="${p.name}"></div>`;
-
       const card = document.createElement('div');
       card.className = 'card';
       if (p.pricePkr) card.setAttribute('data-price-pkr', p.pricePkr);
       if (docId)      card.setAttribute('data-id', docId);
-      card.innerHTML = `
-        ${imgHtml}
-        <div class="card-content">
-          <h3>${p.name}</h3>
-          <p class="short-desc">${p.shortDesc || ''}</p>
-          <p class="full-desc">${p.fullDesc || ''}</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="${p.pricePkr || ''}">${priceText}</div>
-            <a href="${p.link || '#'}" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      `;
+      card.innerHTML = `${imgHtml}<div class="card-content"><h3>${p.name}</h3><p class="short-desc">${p.shortDesc||''}</p><p class="full-desc">${p.fullDesc||''}</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="${p.pricePkr||''}">${priceText}</div><a href="${p.link||'#'}" class="btn" target="_blank">Buy Now</a></div></div>`;
       return card;
     };
 
     function showMsg(text) {
       const msg = document.getElementById('admin-msg');
       if (!msg) return;
-      msg.style.display = 'block';
-      msg.textContent   = text;
+      msg.style.display = 'block'; msg.textContent = text;
       setTimeout(() => msg.style.display = 'none', 3000);
     }
 
-    function closeAdmin() {
-      document.getElementById('admin-panel').classList.remove('open');
-    }
+    function closeAdmin() { document.getElementById('admin-panel').classList.remove('open'); }
 
     function addThumbField() {
       const container = document.getElementById('thumb-fields');
       if (container.children.length >= 3) return;
-      const wrap  = document.createElement('div');
-      wrap.style.marginTop = '8px';
+      const wrap = document.createElement('div'); wrap.style.marginTop = '8px';
       const input = document.createElement('input');
       input.type = 'url'; input.className = 'admin-thumb-input';
       input.placeholder = 'Extra image URL ' + (container.children.length + 2);
       input.style.cssText = 'width:100%;padding:10px 14px;background:var(--cream);border:1px solid var(--border-gold);color:var(--text-dark);font-size:13px;outline:none;';
-      wrap.appendChild(input);
-      container.appendChild(wrap);
+      wrap.appendChild(input); container.appendChild(wrap);
     }
 
     function clearAdminForm() {
-      ['ap-name', 'ap-price-pkr', 'ap-link', 'ap-short', 'ap-full', 'ap-img'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = '';
+      ['ap-name','ap-price-pkr','ap-link','ap-short','ap-full','ap-img'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.value = '';
       });
-      const tagEl = document.getElementById('ap-tag');
-      if (tagEl) tagEl.value = '';
-      document.getElementById('thumb-fields').innerHTML    = '';
-      document.getElementById('ap-edit-id').value          = '';
+      const tagEl = document.getElementById('ap-tag'); if (tagEl) tagEl.value = '';
+      document.getElementById('thumb-fields').innerHTML = '';
+      document.getElementById('ap-edit-id').value = '';
       document.getElementById('ap-submit-btn').textContent = 'Add to Collection';
     }
 
     function switchAdminTab(tab) {
       const tabs = document.querySelectorAll('.admin-tab');
       if (tab === 'add') {
-        document.getElementById('tab-add').style.display  = '';
+        document.getElementById('tab-add').style.display = '';
         document.getElementById('tab-edit').style.display = 'none';
-        tabs[0].classList.add('active');
-        tabs[1].classList.remove('active');
+        tabs[0].classList.add('active'); tabs[1].classList.remove('active');
         clearAdminForm();
       } else {
-        document.getElementById('tab-add').style.display  = 'none';
+        document.getElementById('tab-add').style.display = 'none';
         document.getElementById('tab-edit').style.display = '';
-        tabs[1].classList.add('active');
-        tabs[0].classList.remove('active');
+        tabs[1].classList.add('active'); tabs[0].classList.remove('active');
         if (window._fb.renderEditList) window._fb.renderEditList();
       }
     }
 
-    function capitalize(str) {
-      return str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
-    }
+    // Obfuscated admin access — no readable shortcut in source
+    (function () {
+      // Desktop: key sequence trigger (obfuscated)
+      var _kseq = [], _ktgt = [17,16,65], _ktimer = null;
+      document.addEventListener('keydown', function(e) {
+        _kseq.push(e.keyCode);
+        if (_kseq.length > 3) _kseq.shift();
+        clearTimeout(_ktimer);
+        _ktimer = setTimeout(function(){ _kseq = []; }, 1000);
+        if (_kseq.length === 3 &&
+            _kseq[0] === _ktgt[0] &&
+            _kseq[1] === _ktgt[1] &&
+            _kseq[2] === _ktgt[2]) {
+          e.preventDefault();
+          _kseq = [];
+          document.getElementById('admin-panel').classList.add('open');
+        }
+      });
+      // Mobile: triple-tap logo (no comment identifying it as admin trigger)
+      var _tc = 0, _tt = null;
+      var _logo = document.querySelector('.logo-wrap');
+      if (_logo) {
+        _logo.addEventListener('click', function() {
+          _tc++;
+          clearTimeout(_tt);
+          _tt = setTimeout(function(){ _tc = 0; }, 600);
+          if (_tc >= 3) {
+            _tc = 0; clearTimeout(_tt);
+            document.getElementById('admin-panel').classList.add('open');
+          }
+        });
+      }
+    })();
 
-   // Ctrl + Shift + A → Admin panel (desktop)
-document.addEventListener('keydown', e => {
-  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
-    e.preventDefault();
-    document.getElementById('admin-panel').classList.add('open');
-  }
-});
-
-// Triple-tap on logo → Admin panel (mobile)
-(function () {
-  let tapCount = 0;
-  let tapTimer = null;
-  const logo = document.querySelector('.logo-wrap');
-  if (!logo) return;
-  logo.addEventListener('click', () => {
-    tapCount++;
-    clearTimeout(tapTimer);
-    tapTimer = setTimeout(() => { tapCount = 0; }, 600);
-    if (tapCount >= 3) {
-      tapCount = 0;
-      clearTimeout(tapTimer);
-      document.getElementById('admin-panel').classList.add('open');
-    }
-  });
-})();
-  
-    // Auto-convert images to JPG
+    // JPG conversion
     window.convertToJpg = function (imageUrl) {
       return new Promise((resolve) => {
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
+        const img = new Image(); img.crossOrigin = 'anonymous';
         img.onload = function () {
           try {
             const canvas = document.createElement('canvas');
@@ -2060,7 +1972,6 @@ document.addEventListener('keydown', e => {
     };
 
     window.addEventListener('load', () => setTimeout(() => window.convertPageImagesToJpg(), 1500));
-
     (function watchForNewImages() {
       const observer = new MutationObserver(() => {
         clearTimeout(window._jpgTimer);
