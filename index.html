@@ -1634,50 +1634,86 @@
 
     window.firestoreProducts = [];
 
+    // ─── FIX: collect all static cards from HTML at page load ───
+    // We read them ONCE before Firestore overwrites anything
+    function collectStaticCards() {
+      const staticData = [];
+      // Go through each category section and grab static cards
+      ['skincare', 'nails', 'hair'].forEach(section => {
+        const grid = document.getElementById(section + '-products');
+        if (!grid) return;
+        grid.querySelectorAll('.card:not([data-firestore])').forEach(card => {
+          staticData.push({ element: card.cloneNode(true), section });
+        });
+      });
+      return staticData;
+    }
+    // Collect static cards immediately before Firebase modifies DOM
+    window._staticCards = collectStaticCards();
+
     onAuthStateChanged(auth, (user) => {
       document.getElementById('admin-login-screen').style.display   = user ? 'none'  : 'block';
       document.getElementById('admin-content-screen').style.display = user ? 'block' : 'none';
     });
 
-    // PUBLIC READ — no auth required, uses open Firestore rules
+    // ─── FIX: hide loader immediately, show static cards right away ───
+    const loader = document.getElementById('home-loading');
+    if (loader) loader.style.display = 'none';
+    // Populate home grid with static cards immediately on page load
+    renderHomeWithStatic([]);
+
+    // Public Firestore read
     const q = query(col, orderBy('createdAt', 'desc'));
     onSnapshot(q, (snapshot) => {
       window.firestoreProducts = [];
       snapshot.forEach(d => window.firestoreProducts.push({ id: d.id, ...d.data() }));
-      renderHomeGrid();
+      renderHomeWithStatic(window.firestoreProducts);
       renderCategoryCards();
-      const loader = document.getElementById('home-loading');
-      if (loader) loader.style.display = 'none';
     }, (err) => {
-      // On permission error, hide loader gracefully — static cards still show
-      const loader = document.getElementById('home-loading');
-      if (loader) loader.style.display = 'none';
+      // Firestore failed — static cards already visible, just log the error
       console.warn('Firestore read error:', err.code);
     });
 
-    function renderHomeGrid() {
+    // ─── FIX: "All Products" now shows BOTH static + Firestore cards ───
+    function renderHomeWithStatic(fsProducts) {
       const grid = document.getElementById('home-products');
       if (!grid) return;
-      grid.querySelectorAll('.card[data-firestore]').forEach(c => c.remove());
-      const fsCards = window.firestoreProducts.map(p => {
+
+      // Build fresh Firestore cards
+      const fsCards = fsProducts.map(p => {
         const card = window.buildCard(p, p.id);
         card.setAttribute('data-firestore', '1');
         return card;
       });
-      const staticCards = Array.from(grid.querySelectorAll('.card:not([data-firestore])'));
+
+      // Clone static cards from saved originals
+      const staticCards = window._staticCards.map(s => s.element.cloneNode(true));
+
+      // Merge all and shuffle
       const all = [...staticCards, ...fsCards];
       for (let i = all.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [all[i], all[j]] = [all[j], all[i]];
       }
+
       grid.innerHTML = '';
       all.forEach(card => grid.appendChild(card));
+
+      // Re-apply currency to newly added cards
+      const currency = window.userCurrency;
+      if (currency) {
+        grid.querySelectorAll('.price[data-price-pkr]').forEach(el => {
+          const pkr = parseFloat(el.getAttribute('data-price-pkr'));
+          if (!isNaN(pkr) && pkr > 0) el.textContent = window.convertPrice(pkr, currency);
+        });
+      }
     }
 
     function renderCategoryCards() {
       ['skincare', 'nails', 'hair'].forEach(section => {
         const grid = document.getElementById(section + '-products');
         if (!grid) return;
+        // Remove old Firestore cards, keep static HTML cards
         grid.querySelectorAll('.card[data-firestore]').forEach(c => c.remove());
         window.firestoreProducts
           .filter(p => p.section === section)
@@ -1911,9 +1947,8 @@
       }
     }
 
-    // Obfuscated admin access — no readable shortcut in source
+    // Obfuscated admin access
     (function () {
-      // Desktop: key sequence trigger (obfuscated)
       var _kseq = [], _ktgt = [17,16,65], _ktimer = null;
       document.addEventListener('keydown', function(e) {
         _kseq.push(e.keyCode);
@@ -1929,7 +1964,8 @@
           document.getElementById('admin-panel').classList.add('open');
         }
       });
-     
+    })();
+
     // JPG conversion
     window.convertToJpg = function (imageUrl) {
       return new Promise((resolve) => {
