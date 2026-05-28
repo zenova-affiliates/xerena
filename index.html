@@ -5,2002 +5,366 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> X̌erena | Luxury Beauty Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --cream:        #fdf6f0;
-      --cream-mid:    #f5e8de;
-      --rose-blush:   #f2c4b8;
-      --rose-deep:    #c4626a;
-      --rose-dark:    #8b2635;
-      --champagne:    #d4a96a;
-      --gold:         #b8860b;
-      --gold-light:   #e8c97a;
-      --text-dark:    #2a1a1a;
-      --text-mid:     #6b3a40;
-      --text-muted:   #a07070;
-      --border:       rgba(196, 98, 106, 0.2);
-      --border-gold:  rgba(180, 134, 11, 0.3);
-      --glow-rose:    rgba(196, 98, 106, 0.3);
-      --glow-gold:    rgba(212, 169, 106, 0.4);
-      --card-shadow:  0 8px 40px rgba(139, 38, 53, 0.12);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream);
-      color: var(--text-dark);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.6;
-    }
-
-    header {
-      padding: 0 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(253, 246, 240, 0.92);
-      border-bottom: 1px solid var(--border-gold);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(12px);
-      height: 72px;
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 5%;
-      right: 5%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--champagne), transparent);
-    }
-
-    .logo-wrap {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--rose-dark);
-      letter-spacing: 6px;
-      text-transform: uppercase;
-    }
-
-    .logo-tagline {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 9px;
-      letter-spacing: 4px;
-      color: var(--champagne);
-      text-transform: uppercase;
-      margin-top: 3px;
-      font-weight: 500;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
-    nav a {
-      color: var(--text-mid);
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: color .25s;
-      cursor: pointer;
-      position: relative;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--champagne);
-      transition: width .3s;
-    }
-
-    nav a:hover { color: var(--rose-dark); }
-    nav a:hover::after { width: 100%; }
-
-    .hero {
-      position: relative;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(253, 246, 240, 0.85) 0%, rgba(245, 232, 222, 0.7) 50%, rgba(242, 196, 184, 0.6) 100%),
-        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1920") center/cover no-repeat;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(212, 169, 106, 0.15) 0%, transparent 60%);
-    }
-
-    .hero-deco {
-      position: absolute;
-      right: 8%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      border: 1px solid rgba(196, 98, 106, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-deco::before {
-      content: '';
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      border-radius: 50%;
-      border: 1px solid rgba(212, 169, 106, 0.2);
-    }
-    .hero-deco::after {
-      content: '';
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(242, 196, 184, 0.35) 0%, transparent 70%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 80px 5% 80px 7%;
-      max-width: 600px;
-    }
-
-    .hero-eyebrow {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--champagne);
-      font-weight: 600;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
-      content: '';
-      display: inline-block;
-      width: 28px;
-      height: 1px;
-      background: var(--champagne);
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 68px;
-      font-weight: 300;
-      line-height: 1.1;
-      color: var(--rose-dark);
-      margin-bottom: 24px;
-      letter-spacing: 1px;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--rose-deep);
-    }
-
-    .hero-sub {
-      font-size: 13px;
-      letter-spacing: 1.5px;
-      color: var(--text-mid);
-      margin-bottom: 42px;
-      line-height: 1.9;
-      font-weight: 400;
-      max-width: 380px;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      padding: 14px 38px;
-      background: var(--rose-dark);
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      transition: background .3s, box-shadow .3s, transform .2s;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .btn-primary:hover {
-      background: var(--rose-deep);
-      box-shadow: 0 8px 30px var(--glow-rose);
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      padding: 13px 36px;
-      background: transparent;
-      color: var(--rose-dark);
-      border: 1px solid var(--rose-dark);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all .3s;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .btn-outline:hover {
-      background: var(--rose-dark);
-      color: var(--cream);
-    }
-
-    .categories-strip {
-      background: var(--rose-dark);
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .categories-strip-inner {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-    }
-
-    .cat-btn {
-      padding: 18px 42px;
-      background: transparent;
-      border: none;
-      border-right: 1px solid rgba(255,255,255,0.1);
-      color: rgba(253, 246, 240, 0.6);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all .3s;
-      position: relative;
-    }
-
-    .cat-btn:last-child { border-right: none; }
-
-    .cat-btn::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
-      background: var(--gold-light);
-      transition: width .3s;
-    }
-
-    .cat-btn:hover,
-    .cat-btn.active { color: var(--gold-light); }
-
-    .cat-btn:hover::after,
-    .cat-btn.active::after { width: 40%; }
-
-    .section {
-      padding: 90px 5%;
-      display: none;
-      position: relative;
-    }
-
-    .section.active { display: block; }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .section-eyebrow {
-      font-size: 10px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--champagne);
-      font-weight: 600;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .section-eyebrow::before,
-    .section-eyebrow::after {
-      content: '';
-      display: inline-block;
-      width: 40px;
-      height: 1px;
-      background: var(--champagne);
-    }
-
-    .section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 44px;
-      font-weight: 400;
-      color: var(--rose-dark);
-      letter-spacing: 1px;
-    }
-
-    .search-wrap {
-      max-width: 400px;
-      margin: 0 auto 50px;
-      position: relative;
-    }
-
-    .search-bar {
-      width: 100%;
-      padding: 14px 50px 14px 20px;
-      border: 1px solid var(--border-gold);
-      background: rgba(253, 246, 240, 0.8);
-      color: var(--text-dark);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 1px;
-      outline: none;
-      transition: border-color .3s, box-shadow .3s;
-    }
-
-    .search-bar:focus {
-      border-color: var(--champagne);
-      box-shadow: 0 0 0 3px rgba(212, 169, 106, 0.1);
-    }
-
-    .search-bar::placeholder { color: var(--text-muted); }
-
-    .search-icon {
-      position: absolute;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--champagne);
-      font-size: 16px;
-      pointer-events: none;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 32px;
-    }
-
-    .card {
-      background: #fff;
-      overflow: hidden;
-      border: 1px solid rgba(212, 169, 106, 0.15);
-      transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s;
-      box-shadow: var(--card-shadow);
-      position: relative;
-      cursor: pointer;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--champagne), transparent);
-      opacity: 0;
-      transition: opacity .3s;
-      z-index: 2;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(139, 38, 53, 0.18), 0 8px 20px rgba(139, 38, 53, 0.08);
-    }
-
-    .card:hover::before { opacity: 1; }
-
-    .card-img-wrap {
-      position: relative;
-      overflow: hidden;
-      height: 240px;
-      background: var(--cream-mid);
-    }
-
-    .card-img-wrap img,
-    .card > img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-      transition: transform .6s cubic-bezier(.25,.46,.45,.94);
-    }
-
-    .card:hover .card-img-wrap img,
-    .card:hover > img { transform: scale(1.07); }
-
-    .card-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: var(--rose-dark);
-      color: var(--cream);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      z-index: 3;
-    }
-
-    .card-content {
-      padding: 24px 22px 22px;
-    }
-
-    .card-content h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 6px;
-      line-height: 1.35;
-    }
-
-    .short-desc {
-      color: var(--text-muted);
-      font-size: 12px;
-      margin-bottom: 12px;
-      line-height: 1.6;
-      letter-spacing: 0.5px;
-    }
-
-    .full-desc {
-      display: none;
-      color: var(--text-mid);
-      font-size: 12px;
-      line-height: 1.7;
-      margin-bottom: 12px;
-      padding: 10px 14px;
-      border-left: 2px solid var(--rose-blush);
-      background: rgba(242, 196, 184, 0.1);
-      letter-spacing: 0.3px;
-    }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(212, 169, 106, 0.15);
-    }
-
-    .price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--rose-dark);
-      letter-spacing: 0.5px;
-    }
-
-    .details-btn {
-      background: transparent;
-      border: none;
-      color: var(--champagne);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      padding: 4px 0;
-      border-bottom: 1px solid transparent;
-      transition: border-color .2s, color .2s;
-      margin-bottom: 14px;
-      display: block;
-    }
-
-    .details-btn:hover {
-      color: var(--rose-dark);
-      border-bottom-color: var(--rose-dark);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 22px;
-      background: var(--rose-dark);
-      color: var(--cream);
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: background .3s, box-shadow .3s, transform .2s;
-    }
-
-    .btn:hover {
-      background: var(--rose-deep);
-      box-shadow: 0 6px 20px var(--glow-rose);
-      transform: translateY(-1px);
-    }
-
-    .product-gallery { width: 100%; }
-
-    .main-image {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-      transition: transform .6s cubic-bezier(.25,.46,.45,.94);
-    }
-
-    .card:hover .main-image { transform: scale(1.05); }
-
-    .thumbnails {
-      display: flex;
-      gap: 6px;
-      padding: 8px 10px;
-      background: var(--cream-mid);
-    }
-
-    .thumb {
-      width: 48px;
-      height: 48px;
-      object-fit: cover;
-      cursor: pointer;
-      opacity: 0.5;
-      border: 1px solid transparent;
-      transition: all .25s;
-    }
-
-    .thumb:hover { opacity: 0.85; }
-
-    .thumb.active {
-      opacity: 1;
-      border-color: var(--champagne);
-    }
-
-    .loading-overlay {
-      text-align: center;
-      padding: 60px;
-      color: var(--text-muted);
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 28px;
-      height: 28px;
-      border: 2px solid var(--rose-blush);
-      border-top-color: var(--rose-dark);
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-      margin-bottom: 16px;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .feature-banner {
-      background: var(--rose-dark);
-      color: var(--cream);
-      padding: 60px 5%;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-
-    .feature-banner h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 38px;
-      font-weight: 300;
-      font-style: italic;
-      letter-spacing: 2px;
-      color: var(--gold-light);
-      margin-bottom: 14px;
-      position: relative;
-    }
-
-    .feature-banner p {
-      font-size: 13px;
-      letter-spacing: 1px;
-      color: rgba(253, 246, 240, 0.7);
-      max-width: 480px;
-      margin: 0 auto 32px;
-      line-height: 1.9;
-    }
-
-    .features-grid {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-      position: relative;
-    }
-
-    .feature-item {
-      text-align: center;
-      flex: 1;
-      min-width: 160px;
-      max-width: 200px;
-    }
-
-    .feature-icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .feature-item h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--gold-light);
-      margin-bottom: 8px;
-    }
-
-    .feature-item p {
-      font-size: 11px;
-      color: rgba(253, 246, 240, 0.55);
-      letter-spacing: 0.5px;
-      line-height: 1.7;
-      margin: 0;
-      max-width: unset;
-    }
-
-    .about {
-      padding: 100px 5%;
-      background: linear-gradient(180deg, #fdf6f0 0%, #f5e8de 100%);
-      border-top: 1px solid var(--border-gold);
-      position: relative;
-      text-align: center;
-    }
-
-    .about::before {
-      content: '✦';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--cream);
-      padding: 0 16px;
-      color: var(--champagne);
-      font-size: 18px;
-    }
-
-    .about h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 42px;
-      font-weight: 300;
-      color: var(--rose-dark);
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-    }
-
-    .about p {
-      max-width: 560px;
-      margin: 0 auto;
-      color: var(--text-mid);
-      line-height: 2;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-    }
-
-    footer {
-      background: var(--text-dark);
-      color: rgba(253, 246, 240, 0.4);
-      padding: 32px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    footer .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      letter-spacing: 5px;
-      color: rgba(253, 246, 240, 0.6);
-    }
-
-    footer p { font-size: 11px; letter-spacing: 1px; }
-
-    #admin-panel {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(42, 26, 26, 0.85);
-      backdrop-filter: blur(10px);
-      align-items: center;
-      justify-content: center;
-    }
-
-    #admin-panel.open { display: flex; }
-
-    .admin-box {
-      background: #fff;
-      border: 1px solid var(--border-gold);
-      padding: 40px 36px;
-      width: 100%;
-      max-width: 520px;
-      max-height: 92vh;
-      overflow-y: auto;
-      box-shadow: 0 30px 80px rgba(139, 38, 53, 0.3);
-      position: relative;
-    }
-
-    .admin-close {
-      position: absolute;
-      top: 16px;
-      right: 18px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 16px;
-      cursor: pointer;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s;
-    }
-
-    .admin-close:hover { border-color: var(--rose-dark); color: var(--rose-dark); }
-
-    .admin-login-screen { text-align: center; }
-
-    .admin-login-screen h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      color: var(--rose-dark);
-      margin-bottom: 28px;
-      letter-spacing: 3px;
-    }
-
-    .admin-login-screen input {
-      width: 100%;
-      padding: 13px 16px;
-      margin-bottom: 14px;
-      border: 1px solid var(--border-gold);
-      background: var(--cream);
-      color: var(--text-dark);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      outline: none;
-      transition: border-color .25s;
-    }
-
-    .admin-login-screen input:focus { border-color: var(--rose-deep); }
-
-    .login-btn {
-      width: 100%;
-      padding: 14px;
-      background: var(--rose-dark);
-      color: var(--cream);
-      border: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background .3s;
-    }
-
-    .login-btn:hover { background: var(--rose-deep); }
-
-    .login-error {
-      color: #c0392b;
-      font-size: 12px;
-      margin-top: 10px;
-      display: none;
-    }
-
-    .admin-content-screen { display: none; }
-
-    .admin-content-screen h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      color: var(--rose-dark);
-      margin-bottom: 24px;
-      letter-spacing: 2px;
-    }
-
-    .admin-tabs {
-      display: flex;
-      margin-bottom: 24px;
-      border: 1px solid var(--border-gold);
-      overflow: hidden;
-    }
-
-    .admin-tab {
-      flex: 1;
-      padding: 11px;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all .2s;
-    }
-
-    .admin-tab.active {
-      background: var(--rose-dark);
-      color: var(--cream);
-      font-weight: 700;
-    }
-
-    .admin-field { margin-bottom: 18px; }
-
-    .admin-field label {
-      display: block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 7px;
-    }
-
-    .admin-field input,
-    .admin-field select,
-    .admin-field textarea {
-      width: 100%;
-      padding: 11px 14px;
-      background: var(--cream);
-      border: 1px solid var(--border-gold);
-      color: var(--text-dark);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      outline: none;
-      transition: border-color .25s;
-    }
-
-    .admin-field input:focus,
-    .admin-field select:focus,
-    .admin-field textarea:focus { border-color: var(--rose-deep); }
-
-    .admin-field textarea { resize: vertical; min-height: 70px; }
-
-    .add-thumb-btn {
-      margin-top: 8px;
-      padding: 7px 16px;
-      background: transparent;
-      border: 1px solid var(--border-gold);
-      color: var(--champagne);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all .25s;
-    }
-
-    .add-thumb-btn:hover { background: var(--cream-mid); }
-
-    .admin-submit {
-      width: 100%;
-      padding: 13px;
-      background: var(--rose-dark);
-      color: var(--cream);
-      border: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background .3s, box-shadow .3s;
-    }
-
-    .admin-submit:hover {
-      background: var(--rose-deep);
-      box-shadow: 0 4px 20px var(--glow-rose);
-    }
-
-    .admin-msg {
-      text-align: center;
-      margin-top: 14px;
-      font-size: 12px;
-      color: var(--rose-deep);
-      letter-spacing: 1px;
-      display: none;
-    }
-
-    .logout-btn {
-      padding: 7px 18px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all .2s;
-      margin-bottom: 20px;
-      float: right;
-    }
-
-    .logout-btn:hover { border-color: var(--rose-dark); color: var(--rose-dark); }
-
-    #edit-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 400px;
-      overflow-y: auto;
-    }
-
-    .edit-item {
-      background: var(--cream);
-      border: 1px solid var(--border-gold);
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .edit-item img {
-      width: 52px;
-      height: 52px;
-      object-fit: cover;
-      flex-shrink: 0;
-      border: 1px solid var(--border-gold);
-    }
-
-    .edit-item-info { flex: 1; min-width: 0; }
-
-    .edit-item-info strong {
-      display: block;
-      color: var(--text-dark);
-      font-size: 13px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .edit-item-info span { color: var(--text-muted); font-size: 11px; }
-
-    .edit-item-btns { display: flex; gap: 6px; flex-shrink: 0; }
-
-    .edit-btn {
-      padding: 6px 14px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 1px;
-      border: 1px solid;
-      transition: all .2s;
-      text-transform: uppercase;
-    }
-
-    .edit-btn.edit {
-      background: transparent;
-      color: var(--rose-dark);
-      border-color: var(--rose-dark);
-    }
-
-    .edit-btn.edit:hover { background: var(--rose-dark); color: var(--cream); }
-
-    .edit-btn.del {
-      background: transparent;
-      color: var(--text-muted);
-      border-color: var(--border);
-    }
-
-    .edit-btn.del:hover { background: #c0392b; color: #fff; border-color: #c0392b; }
-
-    #edit-empty {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 13px;
-      padding: 30px 0;
-    }
-
-    #zn-badge {
-      font-size: 10px !important;
-      font-weight: 700 !important;
-      letter-spacing: 1px !important;
-      color: var(--cream) !important;
-      background: var(--rose-dark) !important;
-      padding: 4px 12px !important;
-      border-radius: 0 !important;
-      font-family: 'Montserrat', sans-serif !important;
-      white-space: nowrap !important;
-    }
-
-    .card-img-wrap, .product-gallery { position: relative; }
-
-    .product-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 5px 12px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    .badge-trending   { background: var(--rose-dark); color: #fff; }
-    .badge-bestseller { background: var(--gold);      color: #fff; }
-    .badge-new        { background: var(--rose-deep); color: #fff; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-eyebrow { animation: fadeUp .6s ease .1s both; }
-    .hero h1      { animation: fadeUp .7s ease .25s both; }
-    .hero-sub     { animation: fadeUp .7s ease .4s both; }
-    .hero-cta     { animation: fadeUp .7s ease .55s both; }
-
-    @media (max-width: 768px) {
-      header { height: auto; padding: 16px 5%; flex-direction: column; gap: 14px; }
-      nav { gap: 20px; flex-wrap: wrap; justify-content: center; }
-      .hero { min-height: 70vh; }
-      .hero h1 { font-size: 40px; }
-      .hero-deco { display: none; }
-      .section { padding: 50px 4%; }
-      .products { grid-template-columns: 1fr 1fr; gap: 20px; }
-      .features-grid { gap: 28px; }
-      footer { flex-direction: column; text-align: center; }
-    }
-
-    @media (max-width: 480px) {
-      .products { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 34px; }
-    }
+      --cream:#fdf6f0;--cream-mid:#f5e8de;--rose-blush:#f2c4b8;
+      --rose-deep:#c4626a;--rose-dark:#8b2635;--champagne:#d4a96a;
+      --gold:#b8860b;--gold-light:#e8c97a;--text-dark:#2a1a1a;
+      --text-mid:#6b3a40;--text-muted:#a07070;
+      --border:rgba(196,98,106,0.2);--border-gold:rgba(180,134,11,0.3);
+      --glow-rose:rgba(196,98,106,0.3);--glow-gold:rgba(212,169,106,0.4);
+      --card-shadow:0 8px 40px rgba(139,38,53,0.12);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--text-dark);font-family:'Montserrat',sans-serif;font-weight:300;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");background-size:200px 200px;pointer-events:none;z-index:0;opacity:0.6;}
+    header{padding:0 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(253,246,240,0.92);border-bottom:1px solid var(--border-gold);position:sticky;top:0;z-index:1000;backdrop-filter:blur(12px);height:72px;}
+    header::after{content:'';position:absolute;bottom:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);}
+    .logo-wrap{display:flex;flex-direction:column;line-height:1;}
+    .logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--rose-dark);letter-spacing:6px;text-transform:uppercase;}
+    .logo-tagline{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:4px;color:var(--champagne);text-transform:uppercase;margin-top:3px;font-weight:500;}
+    nav{display:flex;align-items:center;gap:32px;}
+    nav a{color:var(--text-mid);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .25s;cursor:pointer;position:relative;}
+    nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--champagne);transition:width .3s;}
+    nav a:hover{color:var(--rose-dark);}
+    nav a:hover::after{width:100%;}
+    .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,rgba(253,246,240,0.85) 0%,rgba(245,232,222,0.7) 50%,rgba(242,196,184,0.6) 100%),url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1920") center/cover no-repeat;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(212,169,106,0.15) 0%,transparent 60%);}
+    .hero-deco{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:420px;height:420px;border-radius:50%;border:1px solid rgba(196,98,106,0.15);display:flex;align-items:center;justify-content:center;}
+    .hero-deco::before{content:'';position:absolute;width:340px;height:340px;border-radius:50%;border:1px solid rgba(212,169,106,0.2);}
+    .hero-deco::after{content:'';position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(242,196,184,0.35) 0%,transparent 70%);}
+    .hero-content{position:relative;z-index:2;padding:80px 5% 80px 7%;max-width:600px;}
+    .hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--champagne);font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+    .hero-eyebrow::before,.hero-eyebrow::after{content:'';display:inline-block;width:28px;height:1px;background:var(--champagne);}
+    .hero h1{font-family:'Cormorant Garamond',serif;font-size:68px;font-weight:300;line-height:1.1;color:var(--rose-dark);margin-bottom:24px;letter-spacing:1px;}
+    .hero h1 em{font-style:italic;color:var(--rose-deep);}
+    .hero-sub{font-size:13px;letter-spacing:1.5px;color:var(--text-mid);margin-bottom:42px;line-height:1.9;font-weight:400;max-width:380px;}
+    .hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
+    .btn-primary{padding:14px 38px;background:var(--rose-dark);color:var(--cream);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s,box-shadow .3s,transform .2s;font-family:'Montserrat',sans-serif;}
+    .btn-primary:hover{background:var(--rose-deep);box-shadow:0 8px 30px var(--glow-rose);transform:translateY(-1px);}
+    .btn-outline{padding:13px 36px;background:transparent;color:var(--rose-dark);border:1px solid var(--rose-dark);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Montserrat',sans-serif;}
+    .btn-outline:hover{background:var(--rose-dark);color:var(--cream);}
+    .categories-strip{background:var(--rose-dark);padding:0;overflow:hidden;}
+    .categories-strip-inner{display:flex;justify-content:center;gap:0;}
+    .cat-btn{padding:18px 42px;background:transparent;border:none;border-right:1px solid rgba(255,255,255,0.1);color:rgba(253,246,240,0.6);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;position:relative;}
+    .cat-btn:last-child{border-right:none;}
+    .cat-btn::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold-light);transition:width .3s;}
+    .cat-btn:hover,.cat-btn.active{color:var(--gold-light);}
+    .cat-btn:hover::after,.cat-btn.active::after{width:40%;}
+    .section{padding:90px 5%;display:none;position:relative;}
+    .section.active{display:block;}
+    .section-header{text-align:center;margin-bottom:64px;}
+    .section-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--champagne);font-weight:600;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:16px;}
+    .section-eyebrow::before,.section-eyebrow::after{content:'';display:inline-block;width:40px;height:1px;background:var(--champagne);}
+    .section h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:400;color:var(--rose-dark);letter-spacing:1px;}
+    .search-wrap{max-width:400px;margin:0 auto 50px;position:relative;}
+    .search-bar{width:100%;padding:14px 50px 14px 20px;border:1px solid var(--border-gold);background:rgba(253,246,240,0.8);color:var(--text-dark);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:400;letter-spacing:1px;outline:none;transition:border-color .3s,box-shadow .3s;}
+    .search-bar:focus{border-color:var(--champagne);box-shadow:0 0 0 3px rgba(212,169,106,0.1);}
+    .search-bar::placeholder{color:var(--text-muted);}
+    .search-icon{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--champagne);font-size:16px;pointer-events:none;}
+    .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:32px;}
+    .card{background:#fff;overflow:hidden;border:1px solid rgba(212,169,106,0.15);transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s;box-shadow:var(--card-shadow);position:relative;cursor:pointer;}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);opacity:0;transition:opacity .3s;z-index:2;}
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(139,38,53,0.18),0 8px 20px rgba(139,38,53,0.08);}
+    .card:hover::before{opacity:1;}
+    .card-img-wrap{position:relative;overflow:hidden;height:240px;background:var(--cream-mid);}
+    .card-img-wrap img,.card>img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
+    .card:hover .card-img-wrap img,.card:hover>img{transform:scale(1.07);}
+    .card-badge{position:absolute;top:14px;left:14px;background:var(--rose-dark);color:var(--cream);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;z-index:3;}
+    .card-content{padding:24px 22px 22px;}
+    .card-content h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:6px;line-height:1.35;}
+    .short-desc{color:var(--text-muted);font-size:12px;margin-bottom:12px;line-height:1.6;letter-spacing:0.5px;}
+    .full-desc{display:none;color:var(--text-mid);font-size:12px;line-height:1.7;margin-bottom:12px;padding:10px 14px;border-left:2px solid var(--rose-blush);background:rgba(242,196,184,0.1);letter-spacing:0.3px;}
+    .card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:16px;border-top:1px solid rgba(212,169,106,0.15);}
+    .price{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--rose-dark);letter-spacing:0.5px;}
+    .details-btn{background:transparent;border:none;color:var(--champagne);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;padding:4px 0;border-bottom:1px solid transparent;transition:border-color .2s,color .2s;margin-bottom:14px;display:block;}
+    .details-btn:hover{color:var(--rose-dark);border-bottom-color:var(--rose-dark);}
+    .btn{display:inline-block;padding:10px 22px;background:var(--rose-dark);color:var(--cream);text-decoration:none;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:background .3s,box-shadow .3s,transform .2s;}
+    .btn:hover{background:var(--rose-deep);box-shadow:0 6px 20px var(--glow-rose);transform:translateY(-1px);}
+    .product-gallery{width:100%;}
+    .main-image{width:100%;height:240px;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.25,.46,.45,.94);}
+    .card:hover .main-image{transform:scale(1.05);}
+    .thumbnails{display:flex;gap:6px;padding:8px 10px;background:var(--cream-mid);}
+    .thumb{width:48px;height:48px;object-fit:cover;cursor:pointer;opacity:0.5;border:1px solid transparent;transition:all .25s;}
+    .thumb:hover{opacity:0.85;}
+    .thumb.active{opacity:1;border-color:var(--champagne);}
+    .loading-overlay{text-align:center;padding:60px;color:var(--text-muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;}
+    .spinner{display:inline-block;width:28px;height:28px;border:2px solid var(--rose-blush);border-top-color:var(--rose-dark);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .feature-banner{background:var(--rose-dark);color:var(--cream);padding:60px 5%;text-align:center;position:relative;overflow:hidden;}
+    .feature-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+    .feature-banner h2{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;font-style:italic;letter-spacing:2px;color:var(--gold-light);margin-bottom:14px;position:relative;}
+    .feature-banner p{font-size:13px;letter-spacing:1px;color:rgba(253,246,240,0.7);max-width:480px;margin:0 auto 32px;line-height:1.9;}
+    .features-grid{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:40px;position:relative;}
+    .feature-item{text-align:center;flex:1;min-width:160px;max-width:200px;}
+    .feature-icon{font-size:28px;margin-bottom:12px;display:block;}
+    .feature-item h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--gold-light);margin-bottom:8px;}
+    .feature-item p{font-size:11px;color:rgba(253,246,240,0.55);letter-spacing:0.5px;line-height:1.7;margin:0;max-width:unset;}
+    .about{padding:100px 5%;background:linear-gradient(180deg,#fdf6f0 0%,#f5e8de 100%);border-top:1px solid var(--border-gold);position:relative;text-align:center;}
+    .about::before{content:'✦';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--cream);padding:0 16px;color:var(--champagne);font-size:18px;}
+    .about h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--rose-dark);margin-bottom:20px;letter-spacing:2px;}
+    .about p{max-width:560px;margin:0 auto;color:var(--text-mid);line-height:2;font-size:14px;letter-spacing:0.5px;}
+    footer{background:var(--text-dark);color:rgba(253,246,240,0.4);padding:32px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+    footer .footer-logo{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:5px;color:rgba(253,246,240,0.6);}
+    footer p{font-size:11px;letter-spacing:1px;}
+    #zn-badge{font-size:10px!important;font-weight:700!important;letter-spacing:1px!important;color:var(--cream)!important;background:var(--rose-dark)!important;padding:4px 12px!important;border-radius:0!important;font-family:'Montserrat',sans-serif!important;white-space:nowrap!important;}
+    .card-img-wrap,.product-gallery{position:relative;}
+    .product-badge{position:absolute;top:12px;left:12px;padding:5px 12px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;z-index:10;pointer-events:none;}
+    .badge-trending{background:var(--rose-dark);color:#fff;}
+    .badge-bestseller{background:var(--gold);color:#fff;}
+    .badge-new{background:var(--rose-deep);color:#fff;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+    .hero-eyebrow{animation:fadeUp .6s ease .1s both;}
+    .hero h1{animation:fadeUp .7s ease .25s both;}
+    .hero-sub{animation:fadeUp .7s ease .4s both;}
+    .hero-cta{animation:fadeUp .7s ease .55s both;}
+    @media(max-width:768px){header{height:auto;padding:16px 5%;flex-direction:column;gap:14px;}nav{gap:20px;flex-wrap:wrap;justify-content:center;}.hero{min-height:70vh;}.hero h1{font-size:40px;}.hero-deco{display:none;}.section{padding:50px 4%;}.products{grid-template-columns:1fr 1fr;gap:20px;}.features-grid{gap:28px;}footer{flex-direction:column;text-align:center;}}
+    @media(max-width:480px){.products{grid-template-columns:1fr;}.hero h1{font-size:34px;}}
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-wrap">
-      <div class="logo">x̌erena</div>
-      <div class="logo-tagline">Beauty Boutique</div>
-    </div>
-    <nav>
-      <a onclick="openSection('home')">All Products</a>
-      <a onclick="openSection('skincare')">Skincare</a>
-      <a onclick="openSection('nails')">Nails</a>
-      <a onclick="openSection('hair')">Hair</a>
-      <a href="#about">About</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo-wrap">
+    <div class="logo">x̌erena</div>
+    <div class="logo-tagline">Beauty Boutique</div>
+  </div>
+  <nav>
+    <a onclick="openSection('home')">All Products</a>
+    <a onclick="openSection('skincare')">Skincare</a>
+    <a onclick="openSection('nails')">Nails</a>
+    <a onclick="openSection('hair')">Hair</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <div class="hero-deco"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow">New Collection 2026</div>
-      <h1>Beauty That<br><em>Captivates</em></h1>
-      <p class="hero-sub">Discover curated luxury beauty products — skincare, nails & hair — crafted to elevate your everyday ritual.</p>
-      <div class="hero-cta">
-        <button class="btn-primary" onclick="openSection('home')">Shop Collection</button>
-        <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Our Story</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="categories-strip">
-    <div class="categories-strip-inner">
-      <button class="cat-btn active" onclick="openSection('home')">All</button>
-      <button class="cat-btn" onclick="openSection('skincare')">Skincare</button>
-      <button class="cat-btn" onclick="openSection('nails')">Nails & Polish</button>
-      <button class="cat-btn" onclick="openSection('hair')">Hair Care</button>
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">New Collection 2026</div>
+    <h1>Beauty That<br><em>Captivates</em></h1>
+    <p class="hero-sub">Discover curated luxury beauty products — skincare, nails & hair — crafted to elevate your everyday ritual.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="openSection('home')">Shop Collection</button>
+      <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Our Story</button>
     </div>
   </div>
+</section>
 
-  <!-- ALL Products -->
-  <section class="section active" id="home">
-    <div class="section-header">
-      <div class="section-eyebrow">Curated For You</div>
-      <h2>The Full Collection</h2>
-    </div>
-    <div class="search-wrap">
-      <input type="text" class="search-bar" placeholder="Search beauty products..." oninput="searchProducts(this)">
-      <span class="search-icon">⚲</span>
-    </div>
-    <div class="loading-overlay" id="home-loading">
-      <div class="spinner"></div><br>Loading collection...
-    </div>
-    <div class="products" id="home-products"></div>
-  </section>
+<div class="categories-strip">
+  <div class="categories-strip-inner">
+    <button class="cat-btn active" onclick="openSection('home')">All</button>
+    <button class="cat-btn" onclick="openSection('skincare')">Skincare</button>
+    <button class="cat-btn" onclick="openSection('nails')">Nails &amp; Polish</button>
+    <button class="cat-btn" onclick="openSection('hair')">Hair Care</button>
+  </div>
+</div>
 
-  <!-- Skincare -->
-  <section class="section" id="skincare">
-    <div class="section-header">
-      <div class="section-eyebrow">Glow & Protect</div>
-      <h2>Skincare</h2>
-    </div>
-    <div class="search-wrap">
-      <input type="text" class="search-bar" placeholder="Search skincare..." oninput="searchProducts(this)">
-      <span class="search-icon">⚲</span>
-    </div>
-    <div class="products" id="skincare-products">
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/41f85bba-b3b3-4533-9f33-b0ed6a1cbbe1.jpg?imageView2/2/w/800/q/70/format/avif" alt="King Love Beauty Sunscreen">
-          <span class="card-badge">SPF 60</span>
-        </div>
-        <div class="card-content">
-          <h3>King Love Beauty Sunscreen</h3>
-          <p class="short-desc">Vitamin C Sunscreen SPF60, waterproof &amp; moisturizing</p>
-          <p class="full-desc">150g Vitamin C Sunscreen, Broad Spectrum SPF60PA+++, Suitable for Dry and Oily Skin, Moisturizing Formula, Waterproof Protection</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="2755">Rs.2,755</div>
-            <a href="https://share.temu.com/mDNnjKj9S7B" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/5cf28654-2751-4f28-a410-f6567430330b.jpg?imageView2/2/w/800/q/70/format/avif" alt="Clarity Isolation Protection Cream">
-        </div>
-        <div class="card-content">
-          <h3>Clarity Protection Cream</h3>
-          <p class="short-desc">Clear &amp; Non-Irritating Isolation Protection</p>
-          <p class="full-desc">Essential for Going Out, Moisturizing And Clear Facial Sunscreen</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="983">Rs.983</div>
-            <a href="https://share.temu.com/JiaAMDViAPB" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/f5707130-079b-4ab2-aa98-03a60dff3abb.jpg?imageView2/2/w/800/q/70/format/avif" alt="Coconut Tanning Oil">
-          <span class="card-badge">Bestseller</span>
-        </div>
-        <div class="card-content">
-          <h3>Coconut Tanning Oil</h3>
-          <p class="short-desc">100ml Waterproof &amp; Long-Lasting Tan</p>
-          <p class="full-desc">Suitable for Indoor Use, with Moisturizing And Hydrating Properties. Free from Oxybenzone</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="2837">Rs.2,837</div>
-            <a href="https://share.temu.com/ymgAKWDK8FB" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ALL Products -->
+<section class="section active" id="home">
+  <div class="section-header">
+    <div class="section-eyebrow">Curated For You</div>
+    <h2>The Full Collection</h2>
+  </div>
+  <div class="search-wrap">
+    <input type="text" class="search-bar" placeholder="Search beauty products..." oninput="searchProducts(this)">
+    <span class="search-icon">⚲</span>
+  </div>
+  <div class="loading-overlay" id="home-loading"><div class="spinner"></div><br>Loading collection...</div>
+  <div class="products" id="home-products"></div>
+</section>
 
-  <!-- Nails -->
-  <section class="section" id="nails">
-    <div class="section-header">
-      <div class="section-eyebrow">Polish &amp; Perfection</div>
-      <h2>Nails &amp; Polish</h2>
+<!-- Skincare -->
+<section class="section" id="skincare">
+  <div class="section-header">
+    <div class="section-eyebrow">Glow &amp; Protect</div>
+    <h2>Skincare</h2>
+  </div>
+  <div class="search-wrap">
+    <input type="text" class="search-bar" placeholder="Search skincare..." oninput="searchProducts(this)">
+    <span class="search-icon">⚲</span>
+  </div>
+  <div class="products" id="skincare-products">
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/41f85bba-b3b3-4533-9f33-b0ed6a1cbbe1.jpg?imageView2/2/w/800/q/70/format/avif" alt="King Love Beauty Sunscreen"><span class="card-badge">SPF 60</span></div>
+      <div class="card-content"><h3>King Love Beauty Sunscreen</h3><p class="short-desc">Vitamin C Sunscreen SPF60, waterproof &amp; moisturizing</p><p class="full-desc">150g Vitamin C Sunscreen, Broad Spectrum SPF60PA+++, Suitable for Dry and Oily Skin, Moisturizing Formula, Waterproof Protection</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="2755">Rs.2,755</div><a href="https://share.temu.com/mDNnjKj9S7B" class="btn" target="_blank">Buy Now</a></div></div>
     </div>
-    <div class="search-wrap">
-      <input type="text" class="search-bar" placeholder="Search nail products..." oninput="searchProducts(this)">
-      <span class="search-icon">⚲</span>
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/5cf28654-2751-4f28-a410-f6567430330b.jpg?imageView2/2/w/800/q/70/format/avif" alt="Clarity Protection Cream"></div>
+      <div class="card-content"><h3>Clarity Protection Cream</h3><p class="short-desc">Clear &amp; Non-Irritating Isolation Protection</p><p class="full-desc">Essential for Going Out, Moisturizing And Clear Facial Sunscreen</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="983">Rs.983</div><a href="https://share.temu.com/JiaAMDViAPB" class="btn" target="_blank">Buy Now</a></div></div>
     </div>
-    <div class="products" id="nails-products">
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/c6c11aec-30ce-4a25-b5e2-18d8b9fb6d12.jpg?imageView2/2/w/1300/q/90/format/avif" alt="Easter Fake Nail Set">
-          <span class="card-badge">New</span>
-        </div>
-        <div class="card-content">
-          <h3>Easter Macaron Nail Set</h3>
-          <p class="short-desc">24pcs Easter Theme Fake Nails, Macaron Bunny Design</p>
-          <p class="full-desc">Glossy Finish, 12 Sizes with Jelly Glue and Nail File, Artistic False Nails for Girls and Women</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="531">Rs.531</div>
-            <a href="https://share.temu.com/p4VuXYgXsEB" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/ba46f935-de74-4468-bba6-7cfaa9affe27.jpg?imageView2/2/w/800/q/70/format/avif" alt="Red Cat Eye Nails">
-          <span class="card-badge">Trendy</span>
-        </div>
-        <div class="card-content">
-          <h3>Red Cat Eye Nails</h3>
-          <p class="short-desc">10pcs Red Cat-Eye Short Square Fake Nails</p>
-          <p class="full-desc">Glossy Acrylic Nails, Reusable Acrylic Home Nails Suitable for Autumn And Winter Nail Decoration</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="331">Rs.331</div>
-            <a href="https://share.temu.com/d64lMod7mtB" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/f6ff69c8-8eb4-4dae-9d89-1beac4470597.jpg?imageView2/2/w/800/q/70/format/avif" alt="Easter Bunny Nails">
-        </div>
-        <div class="card-content">
-          <h3>Easter Pastel Bunny Nails</h3>
-          <p class="short-desc">24pcs Easter Pastel Bunny False Nails</p>
-          <p class="full-desc">Polka Dot Stripe Cute Artificial Nails, Suitable for Women's Spring and Summer Decorative Styling</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="682">Rs.682</div>
-            <a href="https://share.temu.com/zi8og73hl8B" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Hair -->
-  <section class="section" id="hair">
-    <div class="section-header">
-      <div class="section-eyebrow">Nourish &amp; Transform</div>
-      <h2>Hair Care</h2>
-    </div>
-    <div class="search-wrap">
-      <input type="text" class="search-bar" placeholder="Search hair products..." oninput="searchProducts(this)">
-      <span class="search-icon">⚲</span>
-    </div>
-    <div class="products" id="hair-products">
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H1d2213e1d17e42d3b64cde39adbeaf76b.jpg?avif=close&webp=close" alt="Keratin Treatment">
-          <span class="card-badge">Pro Formula</span>
-        </div>
-        <div class="card-content">
-          <h3>Brazilian Keratin Treatment</h3>
-          <p class="short-desc">Natural Keratin Hair Smoothing Cream 800ml</p>
-          <p class="full-desc">Wholesale by Carton 800ml Hair Smoothing Cream Product. Professional Brazilian Natural Keratin Treatment</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="20241">Rs.20,241</div>
-            <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601418772610" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H23f7a5c36f1b4c58a6648e771ecd1dc65.jpg?avif=close&webp=close" alt="Hair Touch Up Stick">
-        </div>
-        <div class="card-content">
-          <h3>Root Touch-Up Hair Stick</h3>
-          <p class="short-desc">Waterproof 2-in-1 Comb &amp; Color, Gray Hair Cover</p>
-          <p class="full-desc">OEM Waterproof Root Touch Up Hair Dye Stick — 2 in 1 Comb &amp; Color, Quick Gray Hair Cover Up, Ammonia Free Portable</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="258">Rs.258</div>
-            <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601594093666" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H6c4a7006354d487890e4a19212aa92b4S.jpg?avif=close&webp=close" alt="Rosemary Shampoo">
-          <span class="card-badge">Natural</span>
-        </div>
-        <div class="card-content">
-          <h3>Rosemary Mint Shampoo</h3>
-          <p class="short-desc">Rosemary Extract &amp; Peppermint Oil Formula</p>
-          <p class="full-desc">Refreshing Oil-Control Rosemary Shampoo with Rosemary Extract and Peppermint Oil</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="703">Rs.703</div>
-            <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601661844082" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img-wrap">
-          <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H8f83b699c6c644b99904a3d298e4f452a.jpg?avif=close&webp=close" alt="Hair Dye">
-        </div>
-        <div class="card-content">
-          <h3>Organic Salon Hair Colour</h3>
-          <p class="short-desc">Professional Permanent Hair Dye — Salon Grade</p>
-          <p class="full-desc">Professional Hair Dye Permanent Hair Color — Organic Professional Salon Grade</p>
-          <button class="details-btn" onclick="toggleDetails(this)">View Details</button>
-          <div class="card-footer">
-            <div class="price" data-price-pkr="314">Rs.314</div>
-            <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601252719587" class="btn" target="_blank">Buy Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="feature-banner">
-    <h2>Why Choose X̌erena Beauty?</h2>
-    <p>Every product is carefully curated to meet the highest standards of quality, luxury, and effectiveness.</p>
-    <div class="features-grid">
-      <div class="feature-item">
-        <span class="feature-icon">✦</span>
-        <h4>Curated Selection</h4>
-        <p>Hand-picked from trusted global beauty brands</p>
-      </div>
-      <div class="feature-item">
-        <span class="feature-icon">◈</span>
-        <h4>Luxury Quality</h4>
-        <p>Premium formulas for visible, lasting results</p>
-      </div>
-      <div class="feature-item">
-        <span class="feature-icon">◉</span>
-        <h4>Fast Delivery</h4>
-        <p>Shipped to your door, worldwide</p>
-      </div>
-      <div class="feature-item">
-        <span class="feature-icon">❋</span>
-        <h4>Cruelty Free</h4>
-        <p>Beauty without compromise</p>
-      </div>
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/f5707130-079b-4ab2-aa98-03a60dff3abb.jpg?imageView2/2/w/800/q/70/format/avif" alt="Coconut Tanning Oil"><span class="card-badge">Bestseller</span></div>
+      <div class="card-content"><h3>Coconut Tanning Oil</h3><p class="short-desc">100ml Waterproof &amp; Long-Lasting Tan</p><p class="full-desc">Suitable for Indoor Use, with Moisturizing And Hydrating Properties. Free from Oxybenzone</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="2837">Rs.2,837</div><a href="https://share.temu.com/ymgAKWDK8FB" class="btn" target="_blank">Buy Now</a></div></div>
     </div>
   </div>
+</section>
 
-  <section class="about" id="about">
-    <h2>The X̌erena Story</h2>
-    <p>X̌erena was born from a love of luxury and a desire to make premium beauty accessible to all. We partner with trusted global brands to bring you the finest in skincare, nail art, and hair care — delivered with elegance and care.</p>
-  </section>
-
-  <footer>
-    <div class="footer-logo">X̌erena</div>
-    <p>© 2026 X̌erena Beauty Store. All rights reserved.</p>
-    <p style="letter-spacing:0.5px;">Beauty &bull; Luxury &bull; Confidence</p>
-  </footer>
-
-  <!-- Admin Panel -->
-  <div id="admin-panel">
-    <div class="admin-box">
-      <button class="admin-close" onclick="closeAdmin()">&#x2715;</button>
-      <div class="admin-login-screen" id="admin-login-screen">
-        <h2>Admin Login</h2>
-        <input type="email" id="admin-email" placeholder="Email address">
-        <input type="password" id="admin-password" placeholder="Password">
-        <button class="login-btn" onclick="adminLogin()">Sign In</button>
-        <div class="login-error" id="login-error"></div>
-      </div>
-      <div class="admin-content-screen" id="admin-content-screen">
-        <button class="logout-btn" onclick="adminLogout()">Logout</button>
-        <h2>Admin Panel</h2>
-        <div class="admin-tabs">
-          <button class="admin-tab active" onclick="switchAdminTab('add')">+ Add Product</button>
-          <button class="admin-tab" onclick="switchAdminTab('edit')">Edit / Delete</button>
-        </div>
-        <div id="tab-add">
-          <div class="admin-field">
-            <label>Product Name *</label>
-            <input type="text" id="ap-name" placeholder="e.g. Rose Face Serum">
-          </div>
-          <div class="admin-field">
-            <label>Category *</label>
-            <select id="ap-section">
-              <option value="skincare">Skincare</option>
-              <option value="nails">Nails &amp; Polish</option>
-              <option value="hair">Hair Care</option>
-            </select>
-          </div>
-          <div class="admin-field">
-            <label>Product Tag</label>
-            <select id="ap-tag">
-              <option value="">No Tag</option>
-              <option value="trending">🔥 Trending</option>
-              <option value="bestseller">⭐ Best Seller</option>
-              <option value="new">✨ New</option>
-            </select>
-          </div>
-          <div class="admin-field">
-            <label>Price in PKR (Rs.) *</label>
-            <input type="number" id="ap-price-pkr" placeholder="e.g. 999">
-          </div>
-          <div class="admin-field">
-            <label>Buy Now Link</label>
-            <input type="url" id="ap-link" placeholder="https://...">
-          </div>
-          <div class="admin-field">
-            <label>Short Description</label>
-            <input type="text" id="ap-short" placeholder="One-line summary">
-          </div>
-          <div class="admin-field">
-            <label>Full Description</label>
-            <textarea id="ap-full" placeholder="Detailed product info..."></textarea>
-          </div>
-          <div class="admin-field">
-            <label>Main Image URL *</label>
-            <input type="url" id="ap-img" placeholder="https://...">
-            <div id="thumb-fields"></div>
-            <button class="add-thumb-btn" onclick="addThumbField()">+ Add another image</button>
-          </div>
-          <input type="hidden" id="ap-edit-id" value="">
-          <button class="admin-submit" id="ap-submit-btn" onclick="submitProduct()">Add to Collection</button>
-          <div id="admin-msg" class="admin-msg"></div>
-        </div>
-        <div id="tab-edit" style="display:none;">
-          <div id="edit-list"></div>
-          <div id="edit-empty">No saved products yet. Add some first!</div>
-        </div>
-      </div>
+<!-- Nails -->
+<section class="section" id="nails">
+  <div class="section-header">
+    <div class="section-eyebrow">Polish &amp; Perfection</div>
+    <h2>Nails &amp; Polish</h2>
+  </div>
+  <div class="search-wrap">
+    <input type="text" class="search-bar" placeholder="Search nail products..." oninput="searchProducts(this)">
+    <span class="search-icon">⚲</span>
+  </div>
+  <div class="products" id="nails-products">
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/c6c11aec-30ce-4a25-b5e2-18d8b9fb6d12.jpg?imageView2/2/w/1300/q/90/format/avif" alt="Easter Fake Nail Set"><span class="card-badge">New</span></div>
+      <div class="card-content"><h3>Easter Macaron Nail Set</h3><p class="short-desc">24pcs Easter Theme Fake Nails, Macaron Bunny Design</p><p class="full-desc">Glossy Finish, 12 Sizes with Jelly Glue and Nail File, Artistic False Nails for Girls and Women</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="531">Rs.531</div><a href="https://share.temu.com/p4VuXYgXsEB" class="btn" target="_blank">Buy Now</a></div></div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/ba46f935-de74-4468-bba6-7cfaa9affe27.jpg?imageView2/2/w/800/q/70/format/avif" alt="Red Cat Eye Nails"><span class="card-badge">Trendy</span></div>
+      <div class="card-content"><h3>Red Cat Eye Nails</h3><p class="short-desc">10pcs Red Cat-Eye Short Square Fake Nails</p><p class="full-desc">Glossy Acrylic Nails, Reusable Acrylic Home Nails Suitable for Autumn And Winter Nail Decoration</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="331">Rs.331</div><a href="https://share.temu.com/d64lMod7mtB" class="btn" target="_blank">Buy Now</a></div></div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/f6ff69c8-8eb4-4dae-9d89-1beac4470597.jpg?imageView2/2/w/800/q/70/format/avif" alt="Easter Bunny Nails"></div>
+      <div class="card-content"><h3>Easter Pastel Bunny Nails</h3><p class="short-desc">24pcs Easter Pastel Bunny False Nails</p><p class="full-desc">Polka Dot Stripe Cute Artificial Nails, Suitable for Women's Spring and Summer Decorative Styling</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="682">Rs.682</div><a href="https://share.temu.com/zi8og73hl8B" class="btn" target="_blank">Buy Now</a></div></div>
     </div>
   </div>
+</section>
 
-  <!-- Currency System -->
-  <script>
-    (function () {
-      const CURRENCIES = {
-        PK: { code: 'PKR', symbol: 'Rs.',  flag: '🇵🇰', rate: 1        },
-        US: { code: 'USD', symbol: '$',    flag: '🇺🇸', rate: 0.0036   },
-        GB: { code: 'GBP', symbol: '£',    flag: '🇬🇧', rate: 0.0028   },
-        DE: { code: 'EUR', symbol: '€',    flag: '🇩🇪', rate: 0.0033   },
-        FR: { code: 'EUR', symbol: '€',    flag: '🇫🇷', rate: 0.0033   },
-        IT: { code: 'EUR', symbol: '€',    flag: '🇮🇹', rate: 0.0033   },
-        ES: { code: 'EUR', symbol: '€',    flag: '🇪🇸', rate: 0.0033   },
-        NL: { code: 'EUR', symbol: '€',    flag: '🇳🇱', rate: 0.0033   },
-        AE: { code: 'AED', symbol: 'AED ', flag: '🇦🇪', rate: 0.013    },
-        SA: { code: 'SAR', symbol: 'SAR ', flag: '🇸🇦', rate: 0.0135   },
-        IN: { code: 'INR', symbol: '₹',    flag: '🇮🇳', rate: 0.30     },
-        CA: { code: 'CAD', symbol: 'CA$',  flag: '🇨🇦', rate: 0.0049   },
-        AU: { code: 'AUD', symbol: 'A$',   flag: '🇦🇺', rate: 0.0055   },
-        CN: { code: 'CNY', symbol: '¥',    flag: '🇨🇳', rate: 0.026    },
-        TR: { code: 'TRY', symbol: '₺',    flag: '🇹🇷', rate: 0.12     },
-        BD: { code: 'BDT', symbol: '৳',    flag: '🇧🇩', rate: 0.43     },
-        QA: { code: 'QAR', symbol: 'QAR ', flag: '🇶🇦', rate: 0.013    },
-        KW: { code: 'KWD', symbol: 'KD ',  flag: '🇰🇼', rate: 0.0011   },
-      };
-      const DEFAULT = CURRENCIES['PK'];
+<!-- Hair -->
+<section class="section" id="hair">
+  <div class="section-header">
+    <div class="section-eyebrow">Nourish &amp; Transform</div>
+    <h2>Hair Care</h2>
+  </div>
+  <div class="search-wrap">
+    <input type="text" class="search-bar" placeholder="Search hair products..." oninput="searchProducts(this)">
+    <span class="search-icon">⚲</span>
+  </div>
+  <div class="products" id="hair-products">
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H1d2213e1d17e42d3b64cde39adbeaf76b.jpg?avif=close&webp=close" alt="Keratin Treatment"><span class="card-badge">Pro Formula</span></div>
+      <div class="card-content"><h3>Brazilian Keratin Treatment</h3><p class="short-desc">Natural Keratin Hair Smoothing Cream 800ml</p><p class="full-desc">Wholesale by Carton 800ml Hair Smoothing Cream Product. Professional Brazilian Natural Keratin Treatment</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="20241">Rs.20,241</div><a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601418772610" class="btn" target="_blank">Buy Now</a></div></div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H23f7a5c36f1b4c58a6648e771ecd1dc65.jpg?avif=close&webp=close" alt="Hair Touch Up Stick"></div>
+      <div class="card-content"><h3>Root Touch-Up Hair Stick</h3><p class="short-desc">Waterproof 2-in-1 Comb &amp; Color, Gray Hair Cover</p><p class="full-desc">OEM Waterproof Root Touch Up Hair Dye Stick — 2 in 1 Comb &amp; Color, Quick Gray Hair Cover Up, Ammonia Free Portable</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="258">Rs.258</div><a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601594093666" class="btn" target="_blank">Buy Now</a></div></div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H6c4a7006354d487890e4a19212aa92b4S.jpg?avif=close&webp=close" alt="Rosemary Shampoo"><span class="card-badge">Natural</span></div>
+      <div class="card-content"><h3>Rosemary Mint Shampoo</h3><p class="short-desc">Rosemary Extract &amp; Peppermint Oil Formula</p><p class="full-desc">Refreshing Oil-Control Rosemary Shampoo with Rosemary Extract and Peppermint Oil</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="703">Rs.703</div><a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601661844082" class="btn" target="_blank">Buy Now</a></div></div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap"><img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H8f83b699c6c644b99904a3d298e4f452a.jpg?avif=close&webp=close" alt="Hair Dye"></div>
+      <div class="card-content"><h3>Organic Salon Hair Colour</h3><p class="short-desc">Professional Permanent Hair Dye — Salon Grade</p><p class="full-desc">Professional Hair Dye Permanent Hair Color — Organic Professional Salon Grade</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="314">Rs.314</div><a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601252719587" class="btn" target="_blank">Buy Now</a></div></div>
+    </div>
+  </div>
+</section>
 
-      function formatPrice(pkr, currency) {
-        if (!pkr || !currency) return 'N/A';
-        const val = pkr * currency.rate;
-        const wholeOnly = ['PKR', 'INR', 'BDT', 'TRY', 'CNY'];
-        if (wholeOnly.includes(currency.code)) return currency.symbol + Math.round(val).toLocaleString('en-US');
-        if (val < 0.01) return currency.symbol + val.toFixed(4);
-        if (val < 1)    return currency.symbol + val.toFixed(3);
-        if (val < 10)   return currency.symbol + val.toFixed(2);
-        return currency.symbol + Math.round(val).toLocaleString('en-US');
-      }
+<div class="feature-banner">
+  <h2>Why Choose X̌erena Beauty?</h2>
+  <p>Every product is carefully curated to meet the highest standards of quality, luxury, and effectiveness.</p>
+  <div class="features-grid">
+    <div class="feature-item"><span class="feature-icon">✦</span><h4>Curated Selection</h4><p>Hand-picked from trusted global beauty brands</p></div>
+    <div class="feature-item"><span class="feature-icon">◈</span><h4>Luxury Quality</h4><p>Premium formulas for visible, lasting results</p></div>
+    <div class="feature-item"><span class="feature-icon">◉</span><h4>Fast Delivery</h4><p>Shipped to your door, worldwide</p></div>
+    <div class="feature-item"><span class="feature-icon">❋</span><h4>Cruelty Free</h4><p>Beauty without compromise</p></div>
+  </div>
+</div>
 
-      window.convertPrice = formatPrice;
-      window.userCurrency = DEFAULT;
+<section class="about" id="about">
+  <h2>The X̌erena Story</h2>
+  <p>X̌erena was born from a love of luxury and a desire to make premium beauty accessible to all. We partner with trusted global brands to bring you the finest in skincare, nail art, and hair care — delivered with elegance and care.</p>
+</section>
 
-      function renderAllPrices(currency) {
-        document.querySelectorAll('.price[data-price-pkr]').forEach(el => {
-          const pkr = parseFloat(el.getAttribute('data-price-pkr'));
-          if (!isNaN(pkr) && pkr > 0) el.textContent = formatPrice(pkr, currency);
-        });
-      }
+<footer>
+  <div class="footer-logo">X̌erena</div>
+  <p>© 2026 X̌erena Beauty Store. All rights reserved.</p>
+  <p style="letter-spacing:0.5px;">Beauty &bull; Luxury &bull; Confidence</p>
+</footer>
 
-      function showBadge(currency) {
-        let badge = document.getElementById('zn-badge');
-        if (!badge) {
-          badge = document.createElement('span');
-          badge.id = 'zn-badge';
-          const logo = document.querySelector('.logo-wrap');
-          if (logo && logo.parentNode) logo.parentNode.insertBefore(badge, logo.nextSibling);
-          else { const h = document.querySelector('header'); if (h) h.appendChild(badge); }
-        }
-        badge.textContent = currency.flag + ' ' + currency.code;
-      }
+<!-- Currency System -->
+<script>
+(function(){
+  const CURRENCIES={PK:{code:'PKR',symbol:'Rs.',flag:'🇵🇰',rate:1},US:{code:'USD',symbol:'$',flag:'🇺🇸',rate:0.0036},GB:{code:'GBP',symbol:'£',flag:'🇬🇧',rate:0.0028},DE:{code:'EUR',symbol:'€',flag:'🇩🇪',rate:0.0033},FR:{code:'EUR',symbol:'€',flag:'🇫🇷',rate:0.0033},IT:{code:'EUR',symbol:'€',flag:'🇮🇹',rate:0.0033},ES:{code:'EUR',symbol:'€',flag:'🇪🇸',rate:0.0033},NL:{code:'EUR',symbol:'€',flag:'🇳🇱',rate:0.0033},AE:{code:'AED',symbol:'AED ',flag:'🇦🇪',rate:0.013},SA:{code:'SAR',symbol:'SAR ',flag:'🇸🇦',rate:0.0135},IN:{code:'INR',symbol:'₹',flag:'🇮🇳',rate:0.30},CA:{code:'CAD',symbol:'CA$',flag:'🇨🇦',rate:0.0049},AU:{code:'AUD',symbol:'A$',flag:'🇦🇺',rate:0.0055},CN:{code:'CNY',symbol:'¥',flag:'🇨🇳',rate:0.026},TR:{code:'TRY',symbol:'₺',flag:'🇹🇷',rate:0.12},BD:{code:'BDT',symbol:'৳',flag:'🇧🇩',rate:0.43},QA:{code:'QAR',symbol:'QAR ',flag:'🇶🇦',rate:0.013},KW:{code:'KWD',symbol:'KD ',flag:'🇰🇼',rate:0.0011}};
+  const DEFAULT=CURRENCIES['PK'];
+  function formatPrice(pkr,currency){if(!pkr||!currency)return 'N/A';const val=pkr*currency.rate;const wholeOnly=['PKR','INR','BDT','TRY','CNY'];if(wholeOnly.includes(currency.code))return currency.symbol+Math.round(val).toLocaleString('en-US');if(val<0.01)return currency.symbol+val.toFixed(4);if(val<1)return currency.symbol+val.toFixed(3);if(val<10)return currency.symbol+val.toFixed(2);return currency.symbol+Math.round(val).toLocaleString('en-US');}
+  window.convertPrice=formatPrice;window.userCurrency=DEFAULT;
+  function renderAllPrices(currency){document.querySelectorAll('.price[data-price-pkr]').forEach(el=>{const pkr=parseFloat(el.getAttribute('data-price-pkr'));if(!isNaN(pkr)&&pkr>0)el.textContent=formatPrice(pkr,currency);});}
+  function showBadge(currency){let badge=document.getElementById('zn-badge');if(!badge){badge=document.createElement('span');badge.id='zn-badge';const logo=document.querySelector('.logo-wrap');if(logo&&logo.parentNode)logo.parentNode.insertBefore(badge,logo.nextSibling);else{const h=document.querySelector('header');if(h)h.appendChild(badge);}}badge.textContent=currency.flag+' '+currency.code;}
+  function watchNewCards(){const observer=new MutationObserver(()=>{const currency=window.userCurrency||DEFAULT;document.querySelectorAll('.price[data-price-pkr]:not([data-rendered])').forEach(el=>{const pkr=parseFloat(el.getAttribute('data-price-pkr'));if(!isNaN(pkr)&&pkr>0){el.textContent=formatPrice(pkr,currency);el.setAttribute('data-rendered','1');}});});observer.observe(document.body,{childList:true,subtree:true});}
+  async function detectCountry(){try{const r=await fetch('https://ipwho.is/',{signal:AbortSignal.timeout(5000)});const d=await r.json();if(d.country_code)return d.country_code;}catch(e){}try{const r=await fetch('https://ipapi.co/country/',{signal:AbortSignal.timeout(5000)});const t=(await r.text()).trim();if(t.length===2)return t;}catch(e){}try{const r=await fetch('https://ip.seeip.org/geoip',{signal:AbortSignal.timeout(5000)});const d=await r.json();if(d.country_code)return d.country_code;}catch(e){}return null;}
+  async function init(){watchNewCards();let currency=DEFAULT;try{const code=await detectCountry();if(code)currency=CURRENCIES[code]||DEFAULT;}catch(e){}window.userCurrency=currency;showBadge(currency);renderAllPrices(currency);document.querySelectorAll('.price[data-price-pkr]').forEach(el=>el.setAttribute('data-rendered','1'));}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 
-      function watchNewCards() {
-        const observer = new MutationObserver(() => {
-          const currency = window.userCurrency || DEFAULT;
-          document.querySelectorAll('.price[data-price-pkr]:not([data-rendered])').forEach(el => {
-            const pkr = parseFloat(el.getAttribute('data-price-pkr'));
-            if (!isNaN(pkr) && pkr > 0) {
-              el.textContent = formatPrice(pkr, currency);
-              el.setAttribute('data-rendered', '1');
-            }
-          });
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
-      }
+<!-- Firebase — Read Only (no admin) -->
+<script type="module">
+  import { initializeApp }                   from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+  import { getFirestore, collection,
+           onSnapshot, query, orderBy }      from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
-      async function detectCountry() {
-        try {
-          const r = await fetch('https://ipwho.is/', { signal: AbortSignal.timeout(5000) });
-          const d = await r.json();
-          if (d.country_code) return d.country_code;
-        } catch (e) {}
-        try {
-          const r = await fetch('https://ipapi.co/country/', { signal: AbortSignal.timeout(5000) });
-          const t = (await r.text()).trim();
-          if (t.length === 2) return t;
-        } catch (e) {}
-        try {
-          const r = await fetch('https://ip.seeip.org/geoip', { signal: AbortSignal.timeout(5000) });
-          const d = await r.json();
-          if (d.country_code) return d.country_code;
-        } catch (e) {}
-        return null;
-      }
+  const firebaseConfig={apiKey:"AIzaSyDpJCa4L4j53wZ50chwLKx17JFRYBdxSow",authDomain:"zenova-beauty.firebaseapp.com",projectId:"zenova-beauty",storageBucket:"zenova-beauty.firebasestorage.app",messagingSenderId:"923228663946",appId:"1:923228663946:web:7b0a8d7b3cefc80a7e3d73"};
+  const app=initializeApp(firebaseConfig);
+  const db=getFirestore(app);
+  const col=collection(db,'products');
 
-      async function init() {
-        watchNewCards();
-        let currency = DEFAULT;
-        try {
-          const code = await detectCountry();
-          if (code) currency = CURRENCIES[code] || DEFAULT;
-        } catch (e) {}
-        window.userCurrency = currency;
-        showBadge(currency);
-        renderAllPrices(currency);
-        document.querySelectorAll('.price[data-price-pkr]').forEach(el => el.setAttribute('data-rendered', '1'));
-      }
+  window.firestoreProducts=[];
 
-      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-      else init();
-    })();
-  </script>
+  function collectStaticCards(){const staticData=[];['skincare','nails','hair'].forEach(section=>{const grid=document.getElementById(section+'-products');if(!grid)return;grid.querySelectorAll('.card:not([data-firestore])').forEach(card=>{staticData.push({element:card.cloneNode(true),section});});});return staticData;}
+  window._staticCards=collectStaticCards();
 
-  <!-- Firebase Dispatcher -->
-  <script>
-    window._fb = {};
-    async function waitForFb(fn, arg) {
-      let tries = 0;
-      while (!window._fb[fn] && tries < 40) {
-        await new Promise(r => setTimeout(r, 150));
-        tries++;
-      }
-      if (window._fb[fn]) window._fb[fn](arg);
-      else alert('Firebase load nahi hua. Page refresh karo.');
-    }
-    function submitProduct()   { waitForFb('submitProduct'); }
-    function adminLogin()      { waitForFb('adminLogin'); }
-    function adminLogout()     { window._fb.adminLogout ? window._fb.adminLogout() : null; }
-    function editProduct(id)   { waitForFb('editProduct', id); }
-    function deleteProduct(id) { waitForFb('deleteProduct', id); }
-  </script>
+  const loader=document.getElementById('home-loading');
+  if(loader)loader.style.display='none';
+  renderHomeWithStatic([]);
 
-  <!-- Firebase Module -->
-  <script type="module">
-    import { initializeApp }                          from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged,
-             signInWithEmailAndPassword, signOut }    from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
-    import { getFirestore, collection, onSnapshot,
-             addDoc, updateDoc, deleteDoc, doc,
-             query, orderBy }                        from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+  const q=query(col,orderBy('createdAt','desc'));
+  onSnapshot(q,(snapshot)=>{window.firestoreProducts=[];snapshot.forEach(d=>window.firestoreProducts.push({id:d.id,...d.data()}));renderHomeWithStatic(window.firestoreProducts);renderCategoryCards();},(err)=>{console.warn('Firestore read error:',err.code);});
 
-    const firebaseConfig = {
-      apiKey:            "AIzaSyDpJCa4L4j53wZ50chwLKx17JFRYBdxSow",
-      authDomain:        "zenova-beauty.firebaseapp.com",
-      projectId:         "zenova-beauty",
-      storageBucket:     "zenova-beauty.firebasestorage.app",
-      messagingSenderId: "923228663946",
-      appId:             "1:923228663946:web:7b0a8d7b3cefc80a7e3d73",
-      measurementId:     "G-NRP1ETHDZN"
-    };
+  function renderHomeWithStatic(fsProducts){
+    const grid=document.getElementById('home-products');if(!grid)return;
+    const fsCards=fsProducts.map(p=>{const card=window.buildCard(p,p.id);card.setAttribute('data-firestore','1');return card;});
+    const staticCards=window._staticCards.map(s=>s.element.cloneNode(true));
+    const all=[...staticCards,...fsCards];
+    for(let i=all.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[all[i],all[j]]=[all[j],all[i]];}
+    grid.innerHTML='';all.forEach(card=>grid.appendChild(card));
+    const currency=window.userCurrency;
+    if(currency){grid.querySelectorAll('.price[data-price-pkr]').forEach(el=>{const pkr=parseFloat(el.getAttribute('data-price-pkr'));if(!isNaN(pkr)&&pkr>0)el.textContent=window.convertPrice(pkr,currency);});}
+  }
 
-    const app  = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db   = getFirestore(app);
-    const col  = collection(db, 'products');
-
-    window.firestoreProducts = [];
-
-    // ─── FIX: collect all static cards from HTML at page load ───
-    // We read them ONCE before Firestore overwrites anything
-    function collectStaticCards() {
-      const staticData = [];
-      // Go through each category section and grab static cards
-      ['skincare', 'nails', 'hair'].forEach(section => {
-        const grid = document.getElementById(section + '-products');
-        if (!grid) return;
-        grid.querySelectorAll('.card:not([data-firestore])').forEach(card => {
-          staticData.push({ element: card.cloneNode(true), section });
-        });
-      });
-      return staticData;
-    }
-    // Collect static cards immediately before Firebase modifies DOM
-    window._staticCards = collectStaticCards();
-
-    onAuthStateChanged(auth, (user) => {
-      document.getElementById('admin-login-screen').style.display   = user ? 'none'  : 'block';
-      document.getElementById('admin-content-screen').style.display = user ? 'block' : 'none';
+  function renderCategoryCards(){
+    ['skincare','nails','hair'].forEach(section=>{
+      const grid=document.getElementById(section+'-products');if(!grid)return;
+      grid.querySelectorAll('.card[data-firestore]').forEach(c=>c.remove());
+      window.firestoreProducts.filter(p=>p.section===section).forEach(p=>{const card=window.buildCard(p,p.id);card.setAttribute('data-firestore','1');grid.appendChild(card);});
     });
+  }
+</script>
 
-    // ─── FIX: hide loader immediately, show static cards right away ───
-    const loader = document.getElementById('home-loading');
-    if (loader) loader.style.display = 'none';
-    // Populate home grid with static cards immediately on page load
-    renderHomeWithStatic([]);
+<!-- Helpers -->
+<script>
+  function openSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.cat-btn').forEach(b=>{const map={home:'all',skincare:'skincare',nails:'nails & polish',hair:'hair care'};b.classList.toggle('active',b.textContent.trim().toLowerCase()===(map[id]||id));});const el=document.getElementById(id);if(el){el.classList.add('active');window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}}
+  function toggleDetails(btn){const fd=btn.closest('.card-content').querySelector('.full-desc');if(fd.style.display==='block'){fd.style.display='none';btn.textContent='View Details';}else{fd.style.display='block';btn.textContent='Hide Details';}}
+  function changeImage(thumb){const gallery=thumb.closest('.product-gallery');gallery.querySelector('.main-image').src=thumb.src;gallery.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));thumb.classList.add('active');}
+  function searchProducts(input){const filter=input.value.trim().toLowerCase();input.closest('.section').querySelectorAll('.card').forEach(card=>{const title=(card.querySelector('h3')?.textContent||'').toLowerCase();const desc=(card.querySelector('.short-desc')?.textContent||'').toLowerCase();card.style.display=(!filter||title.includes(filter)||desc.includes(filter))?'':'none';});}
 
-    // Public Firestore read
-    const q = query(col, orderBy('createdAt', 'desc'));
-    onSnapshot(q, (snapshot) => {
-      window.firestoreProducts = [];
-      snapshot.forEach(d => window.firestoreProducts.push({ id: d.id, ...d.data() }));
-      renderHomeWithStatic(window.firestoreProducts);
-      renderCategoryCards();
-    }, (err) => {
-      // Firestore failed — static cards already visible, just log the error
-      console.warn('Firestore read error:', err.code);
-    });
+  window.buildCard=function(p,docId){
+    const allImgs=[p.mainImg,...(p.extraImgs||[])].filter(Boolean);
+    const hasMultiple=allImgs.length>1;
+    const currency=window.userCurrency||{symbol:'Rs.',rate:1};
+    const priceText=p.pricePkr?window.convertPrice(p.pricePkr,currency):'N/A';
+    const badgeHtml=p.tag==='trending'?`<span class="product-badge badge-trending">🔥 Trending</span>`:p.tag==='bestseller'?`<span class="product-badge badge-bestseller">⭐ Best Seller</span>`:p.tag==='new'?`<span class="product-badge badge-new">✨ New</span>`:'';
+    let imgHtml=hasMultiple?`<div class="product-gallery">${badgeHtml}<img src="${p.mainImg}" class="main-image" crossorigin="anonymous"><div class="thumbnails">${allImgs.map((src,i)=>`<img src="${src}" class="thumb ${i===0?'active':''}" crossorigin="anonymous" onclick="changeImage(this)">`).join('')}</div></div>`:`<div class="card-img-wrap">${badgeHtml}<img src="${p.mainImg}" crossorigin="anonymous" alt="${p.name}"></div>`;
+    const card=document.createElement('div');card.className='card';
+    if(p.pricePkr)card.setAttribute('data-price-pkr',p.pricePkr);
+    if(docId)card.setAttribute('data-id',docId);
+    card.innerHTML=`${imgHtml}<div class="card-content"><h3>${p.name}</h3><p class="short-desc">${p.shortDesc||''}</p><p class="full-desc">${p.fullDesc||''}</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="${p.pricePkr||''}">${priceText}</div><a href="${p.link||'#'}" class="btn" target="_blank">Buy Now</a></div></div>`;
+    return card;
+  };
 
-    // ─── FIX: "All Products" now shows BOTH static + Firestore cards ───
-    function renderHomeWithStatic(fsProducts) {
-      const grid = document.getElementById('home-products');
-      if (!grid) return;
-
-      // Build fresh Firestore cards
-      const fsCards = fsProducts.map(p => {
-        const card = window.buildCard(p, p.id);
-        card.setAttribute('data-firestore', '1');
-        return card;
-      });
-
-      // Clone static cards from saved originals
-      const staticCards = window._staticCards.map(s => s.element.cloneNode(true));
-
-      // Merge all and shuffle
-      const all = [...staticCards, ...fsCards];
-      for (let i = all.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [all[i], all[j]] = [all[j], all[i]];
-      }
-
-      grid.innerHTML = '';
-      all.forEach(card => grid.appendChild(card));
-
-      // Re-apply currency to newly added cards
-      const currency = window.userCurrency;
-      if (currency) {
-        grid.querySelectorAll('.price[data-price-pkr]').forEach(el => {
-          const pkr = parseFloat(el.getAttribute('data-price-pkr'));
-          if (!isNaN(pkr) && pkr > 0) el.textContent = window.convertPrice(pkr, currency);
-        });
-      }
-    }
-
-    function renderCategoryCards() {
-      ['skincare', 'nails', 'hair'].forEach(section => {
-        const grid = document.getElementById(section + '-products');
-        if (!grid) return;
-        // Remove old Firestore cards, keep static HTML cards
-        grid.querySelectorAll('.card[data-firestore]').forEach(c => c.remove());
-        window.firestoreProducts
-          .filter(p => p.section === section)
-          .forEach(p => {
-            const card = window.buildCard(p, p.id);
-            card.setAttribute('data-firestore', '1');
-            grid.appendChild(card);
-          });
-      });
-    }
-
-    window._fb.adminLogin = function () {
-      const email = document.getElementById('admin-email').value.trim();
-      const pass  = document.getElementById('admin-password').value;
-      const errEl = document.getElementById('login-error');
-      errEl.style.display = 'none';
-      signInWithEmailAndPassword(auth, email, pass)
-        .then(() => {
-          document.getElementById('admin-email').value    = '';
-          document.getElementById('admin-password').value = '';
-        })
-        .catch(err => {
-          const msgs = {
-            'auth/invalid-email':      'Invalid email address.',
-            'auth/user-not-found':     'No account found.',
-            'auth/wrong-password':     'Incorrect password.',
-            'auth/invalid-credential': 'Invalid email or password.',
-            'auth/too-many-requests':  'Too many attempts. Try later.',
-          };
-          errEl.textContent   = msgs[err.code] || 'Login failed.';
-          errEl.style.display = 'block';
-        });
-    };
-
-    window._fb.adminLogout = function () {
-      signOut(auth).then(() => { closeAdmin(); showMsg('Logged out.'); });
-    };
-
-    window._fb.submitProduct = async function () {
-      const name      = document.getElementById('ap-name').value.trim();
-      const pricePkr  = parseFloat(document.getElementById('ap-price-pkr').value);
-      const section   = document.getElementById('ap-section').value;
-      const link      = document.getElementById('ap-link').value.trim();
-      const shortDesc = document.getElementById('ap-short').value.trim();
-      const fullDesc  = document.getElementById('ap-full').value.trim();
-      const mainImg   = document.getElementById('ap-img').value.trim();
-      const editId    = document.getElementById('ap-edit-id').value;
-      const tag       = document.getElementById('ap-tag').value;
-      if (!name || !mainImg || !pricePkr) { alert('Name, Image URL, and Price are required.'); return; }
-      const extraImgs = Array.from(document.querySelectorAll('.admin-thumb-input'))
-        .map(i => i.value.trim()).filter(Boolean);
-      const product = { name, pricePkr, section, link, shortDesc, fullDesc, mainImg, extraImgs, tag, createdAt: Date.now() };
-      try {
-        if (editId) {
-          await updateDoc(doc(db, 'products', editId), product);
-          showMsg('✓ "' + name + '" updated!');
-        } else {
-          await addDoc(col, product);
-          openSection(section);
-          showMsg('✓ "' + name + '" added to collection!');
-        }
-        clearAdminForm();
-      } catch (e) { console.error(e); alert('Could not save product.'); }
-    };
-
-    window._fb.editProduct = function (docId) {
-      const p = window.firestoreProducts.find(x => x.id === docId);
-      if (!p) return;
-      switchAdminTab('add');
-      document.getElementById('ap-name').value      = p.name      || '';
-      document.getElementById('ap-price-pkr').value = p.pricePkr  || '';
-      document.getElementById('ap-section').value   = p.section   || 'skincare';
-      document.getElementById('ap-link').value      = p.link      || '';
-      document.getElementById('ap-short').value     = p.shortDesc || '';
-      document.getElementById('ap-full').value      = p.fullDesc  || '';
-      document.getElementById('ap-img').value       = p.mainImg   || '';
-      document.getElementById('ap-edit-id').value   = docId;
-      document.getElementById('ap-tag').value       = p.tag       || '';
-      document.getElementById('ap-submit-btn').textContent = 'Save Changes';
-      const thumbContainer = document.getElementById('thumb-fields');
-      thumbContainer.innerHTML = '';
-      (p.extraImgs || []).forEach(src => {
-        const wrap  = document.createElement('div');
-        wrap.style.marginTop = '8px';
-        const input = document.createElement('input');
-        input.type = 'url'; input.className = 'admin-thumb-input';
-        input.value = src;
-        input.style.cssText = 'width:100%;padding:10px 14px;background:var(--cream);border:1px solid var(--border-gold);color:var(--text-dark);font-size:13px;outline:none;';
-        wrap.appendChild(input);
-        thumbContainer.appendChild(wrap);
-      });
-    };
-
-    window._fb.deleteProduct = async function (docId) {
-      if (!confirm('Delete this product permanently?')) return;
-      try {
-        await deleteDoc(doc(db, 'products', docId));
-        if (window._fb.renderEditList) window._fb.renderEditList();
-        showMsg('Product deleted.');
-      } catch (e) { console.error(e); alert('Delete failed.'); }
-    };
-
-    window._fb.renderEditList = function () {
-      const list  = document.getElementById('edit-list');
-      const empty = document.getElementById('edit-empty');
-      list.innerHTML = '';
-      if (!window.firestoreProducts.length) { empty.style.display = 'block'; return; }
-      empty.style.display = 'none';
-      window.firestoreProducts.forEach(p => {
-        const currency     = window.userCurrency || { symbol: 'Rs.', rate: 1 };
-        const displayPrice = p.pricePkr ? window.convertPrice(p.pricePkr, currency) : 'N/A';
-        const item = document.createElement('div');
-        item.className = 'edit-item';
-        item.innerHTML = `
-          <img src="${p.mainImg}" onerror="this.src='https://placehold.co/52x52/fdf6f0/8b2635?text=?'">
-          <div class="edit-item-info">
-            <strong>${p.name}</strong>
-            <span>${p.section} · ${displayPrice}</span>
-          </div>
-          <div class="edit-item-btns">
-            <button class="edit-btn edit" onclick="editProduct('${p.id}')">Edit</button>
-            <button class="edit-btn del"  onclick="deleteProduct('${p.id}')">Delete</button>
-          </div>
-        `;
-        list.appendChild(item);
-      });
-    };
-  </script>
-
-  <!-- Helpers + Obfuscated Admin Trigger -->
-  <script>
-    function openSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.cat-btn').forEach(b => {
-        const map = { home: 'all', skincare: 'skincare', nails: 'nails & polish', hair: 'hair care' };
-        b.classList.toggle('active', b.textContent.trim().toLowerCase() === (map[id] || id));
-      });
-      const el = document.getElementById(id);
-      if (el) {
-        el.classList.add('active');
-        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-      }
-    }
-
-    function toggleDetails(btn) {
-      const fd = btn.closest('.card-content').querySelector('.full-desc');
-      if (fd.style.display === 'block') {
-        fd.style.display = 'none'; btn.textContent = 'View Details';
-      } else {
-        fd.style.display = 'block'; btn.textContent = 'Hide Details';
-      }
-    }
-
-    function changeImage(thumb) {
-      const gallery = thumb.closest('.product-gallery');
-      gallery.querySelector('.main-image').src = thumb.src;
-      gallery.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
-    }
-
-    function searchProducts(input) {
-      const filter = input.value.trim().toLowerCase();
-      input.closest('.section').querySelectorAll('.card').forEach(card => {
-        const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
-        const desc  = (card.querySelector('.short-desc')?.textContent || '').toLowerCase();
-        card.style.display = (!filter || title.includes(filter) || desc.includes(filter)) ? '' : 'none';
-      });
-    }
-
-    window.buildCard = function (p, docId) {
-      const allImgs     = [p.mainImg, ...(p.extraImgs || [])].filter(Boolean);
-      const hasMultiple = allImgs.length > 1;
-      const currency    = window.userCurrency || { symbol: 'Rs.', rate: 1 };
-      const priceText   = p.pricePkr ? window.convertPrice(p.pricePkr, currency) : 'N/A';
-      const badgeHtml   = p.tag === 'trending'   ? `<span class="product-badge badge-trending">🔥 Trending</span>`
-                        : p.tag === 'bestseller'  ? `<span class="product-badge badge-bestseller">⭐ Best Seller</span>`
-                        : p.tag === 'new'         ? `<span class="product-badge badge-new">✨ New</span>` : '';
-      let imgHtml = hasMultiple
-        ? `<div class="product-gallery">${badgeHtml}<img src="${p.mainImg}" class="main-image" crossorigin="anonymous"><div class="thumbnails">${allImgs.map((src,i)=>`<img src="${src}" class="thumb ${i===0?'active':''}" crossorigin="anonymous" onclick="changeImage(this)">`).join('')}</div></div>`
-        : `<div class="card-img-wrap">${badgeHtml}<img src="${p.mainImg}" crossorigin="anonymous" alt="${p.name}"></div>`;
-      const card = document.createElement('div');
-      card.className = 'card';
-      if (p.pricePkr) card.setAttribute('data-price-pkr', p.pricePkr);
-      if (docId)      card.setAttribute('data-id', docId);
-      card.innerHTML = `${imgHtml}<div class="card-content"><h3>${p.name}</h3><p class="short-desc">${p.shortDesc||''}</p><p class="full-desc">${p.fullDesc||''}</p><button class="details-btn" onclick="toggleDetails(this)">View Details</button><div class="card-footer"><div class="price" data-price-pkr="${p.pricePkr||''}">${priceText}</div><a href="${p.link||'#'}" class="btn" target="_blank">Buy Now</a></div></div>`;
-      return card;
-    };
-
-    function showMsg(text) {
-      const msg = document.getElementById('admin-msg');
-      if (!msg) return;
-      msg.style.display = 'block'; msg.textContent = text;
-      setTimeout(() => msg.style.display = 'none', 3000);
-    }
-
-    function closeAdmin() { document.getElementById('admin-panel').classList.remove('open'); }
-
-    function addThumbField() {
-      const container = document.getElementById('thumb-fields');
-      if (container.children.length >= 3) return;
-      const wrap = document.createElement('div'); wrap.style.marginTop = '8px';
-      const input = document.createElement('input');
-      input.type = 'url'; input.className = 'admin-thumb-input';
-      input.placeholder = 'Extra image URL ' + (container.children.length + 2);
-      input.style.cssText = 'width:100%;padding:10px 14px;background:var(--cream);border:1px solid var(--border-gold);color:var(--text-dark);font-size:13px;outline:none;';
-      wrap.appendChild(input); container.appendChild(wrap);
-    }
-
-    function clearAdminForm() {
-      ['ap-name','ap-price-pkr','ap-link','ap-short','ap-full','ap-img'].forEach(id => {
-        const el = document.getElementById(id); if (el) el.value = '';
-      });
-      const tagEl = document.getElementById('ap-tag'); if (tagEl) tagEl.value = '';
-      document.getElementById('thumb-fields').innerHTML = '';
-      document.getElementById('ap-edit-id').value = '';
-      document.getElementById('ap-submit-btn').textContent = 'Add to Collection';
-    }
-
-    function switchAdminTab(tab) {
-      const tabs = document.querySelectorAll('.admin-tab');
-      if (tab === 'add') {
-        document.getElementById('tab-add').style.display = '';
-        document.getElementById('tab-edit').style.display = 'none';
-        tabs[0].classList.add('active'); tabs[1].classList.remove('active');
-        clearAdminForm();
-      } else {
-        document.getElementById('tab-add').style.display = 'none';
-        document.getElementById('tab-edit').style.display = '';
-        tabs[1].classList.add('active'); tabs[0].classList.remove('active');
-        if (window._fb.renderEditList) window._fb.renderEditList();
-      }
-    }
-
-    // Obfuscated admin access
-    (function () {
-      var _kseq = [], _ktgt = [17,16,65], _ktimer = null;
-      document.addEventListener('keydown', function(e) {
-        _kseq.push(e.keyCode);
-        if (_kseq.length > 3) _kseq.shift();
-        clearTimeout(_ktimer);
-        _ktimer = setTimeout(function(){ _kseq = []; }, 1000);
-        if (_kseq.length === 3 &&
-            _kseq[0] === _ktgt[0] &&
-            _kseq[1] === _ktgt[1] &&
-            _kseq[2] === _ktgt[2]) {
-          e.preventDefault();
-          _kseq = [];
-          document.getElementById('admin-panel').classList.add('open');
-        }
-      });
-    })();
-
-    // JPG conversion
-    window.convertToJpg = function (imageUrl) {
-      return new Promise((resolve) => {
-        const img = new Image(); img.crossOrigin = 'anonymous';
-        img.onload = function () {
-          try {
-            const canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
-            canvas.getContext('2d').drawImage(img, 0, 0);
-            resolve(canvas.toDataURL('image/jpeg', 0.92));
-          } catch (e) { resolve(imageUrl); }
-        };
-        img.onerror = () => resolve(imageUrl);
-        img.src = imageUrl;
-      });
-    };
-
-    window.convertPageImagesToJpg = async function () {
-      document.querySelectorAll('.card img.main-image, .card > img, .card-img-wrap > img').forEach(async (img) => {
-        if (img.dataset.jpgConverted) return;
-        const jpgUrl = await window.convertToJpg(img.src);
-        if (jpgUrl !== img.src && jpgUrl.startsWith('data:image/jpeg')) img.src = jpgUrl;
-        img.dataset.jpgConverted = 'yes';
-      });
-    };
-
-    window.addEventListener('load', () => setTimeout(() => window.convertPageImagesToJpg(), 1500));
-    (function watchForNewImages() {
-      const observer = new MutationObserver(() => {
-        clearTimeout(window._jpgTimer);
-        window._jpgTimer = setTimeout(() => window.convertPageImagesToJpg(), 800);
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-    })();
-  </script>
+  // JPG conversion
+  window.convertToJpg=function(imageUrl){return new Promise((resolve)=>{const img=new Image();img.crossOrigin='anonymous';img.onload=function(){try{const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;canvas.getContext('2d').drawImage(img,0,0);resolve(canvas.toDataURL('image/jpeg',0.92));}catch(e){resolve(imageUrl);}};img.onerror=()=>resolve(imageUrl);img.src=imageUrl;});};
+  window.convertPageImagesToJpg=async function(){document.querySelectorAll('.card img.main-image,.card>img,.card-img-wrap>img').forEach(async(img)=>{if(img.dataset.jpgConverted)return;const jpgUrl=await window.convertToJpg(img.src);if(jpgUrl!==img.src&&jpgUrl.startsWith('data:image/jpeg'))img.src=jpgUrl;img.dataset.jpgConverted='yes';});};
+  window.addEventListener('load',()=>setTimeout(()=>window.convertPageImagesToJpg(),1500));
+  (function watchForNewImages(){const observer=new MutationObserver(()=>{clearTimeout(window._jpgTimer);window._jpgTimer=setTimeout(()=>window.convertPageImagesToJpg(),800);});observer.observe(document.body,{childList:true,subtree:true});})();
+</script>
 
 </body>
 </html>
